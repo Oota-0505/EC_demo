@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXECUTIVE COMPASS | エグゼクティブ人材育成プログラム</title>
+    <meta name="description" content="企業の持続的成長を担うエグゼクティブ人材の育成を支援。経営シミュレーション体験を通じて、未来の経営人材を創るための人材育成プログラム。">
+    <link rel="icon" href="images/logo_transparent.png" type="image/png">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="antialiased" id="top">
+    
+    <!-- ヘッダー（ロゴ画像・ビジネス寄り堅いデザイン） -->
+    <header class="header" id="siteHeader">
+        <div class="header-inner">
+            <a href="#top" class="header__logo" aria-label="EXECUTIVE COMPASS トップ">
+                <span class="header__logo-icon"><img src="images/CTA.png" alt="" width="36" height="36"></span>
+                <span class="header__logo-text"><span class="header__logo-executive">EXECUTIVE</span><span class="header__logo-compass"> COMPASS</span></span>
+            </a>
+            <div class="header__right">
+                <nav class="header__nav">
+                    <ul class="header__nav-list">
+                        <li><a href="#problem">課題</a></li>
+                        <li><a href="#about">COMPASSとは</a></li>
+                        <li><a href="#target">対象者</a></li>
+                        <li><a href="#flow">プログラム</a></li>
+                        <li><a href="#benefits">導入効果</a></li>
+                        <li class="header__nav-cta"><a href="#contact">お問い合わせ</a></li>
+                    </ul>
+                </nav>
+                <a href="#contact" class="header__cta">お問い合わせ</a>
+            </div>
+            <button type="button" class="header__menu-toggle" aria-label="メニューを開く" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ヒーローセクション（LOSSCAN-style KV・3枚スライド＋右縦パギネーション） -->
+    <section class="kv js-parallax-hero">
+        <div class="kv__slider swiper" id="kvSlider">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide kv__slide" style="background-image:url('images/HERO1.png')"></div>
+                <div class="swiper-slide kv__slide" style="background-image:url('images/HERO2.jpg')"></div>
+                <div class="swiper-slide kv__slide" style="background-image:url('images/HERO3.jpg')"></div>
+            </div>
+        </div>
+        <div class="kv__inner">
+            <p class="kv__label">上場企業が選ぶエグゼクティブ人材育成プログラム</p>
+            <h2 class="kv__title">
+                <span class="kv__title-line">感覚経営から戦略経営へ</span>
+            </h2>
+            <div class="kv__lead">
+                <p>勘ではなく、根拠で動く。</p>
+                <p>数字で語れる幹部が利益率を<strong class="kv__lead-accent metallic-gold">25%</strong>変える</p>
+            </div>
+            <p class="kv__sub">
+                経営シミュレーション体験を通じて、「自ら考え行動する人材」を育成し、人的資本経営を加速させる実践型プログラム
+            </p>
+            <div class="kv__actions">
+                <a href="#contact" class="kv__btn">
+                    <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                    無料相談・資料請求
+                </a>
+                <a href="#about" class="kv__btn-outline">
+                    <i class="fas fa-arrow-down" aria-hidden="true"></i>
+                    詳細を見る
+                </a>
+            </div>
+        </div>
+        <!-- 右側・縦の丸ボタン（3枚切り替え・クリック＆自動） -->
+        <div class="kv__pagination swiper-pagination"></div>
+        <a href="#problem" class="kv__scroll" aria-label="下へスクロール">
+            <span class="kv__scroll-label metallic-gold">SCROLL</span>
+            <div class="kv__scroll-indicator">
+                <div class="kv__scroll-line"></div>
+            </div>
+        </a>
+    </section>
+
+    <!-- 悩み共感セクション（LOSSCAN-style・中央写真は名刺風） -->
+    <section id="problem" class="problem-section">
+        <div class="problem-pin-wrap">
+            <div class="problem-pinned">
+                <div class="problem-pinned-inner">
+                    <div class="problem-section-header">
+                        <h2 class="problem-section-title">このような<span class="problem-section-title--accent metallic-gold">課題</span>を抱えていませんか？</h2>
+                        <div class="problem-section-title__line"></div>
+                    </div>
+                    <div class="problem-arena">
+                        <div class="problem-card problem-card--tl">
+                            <p class="problem-card__text">次世代を任せられる人材が育たない</p>
+                        </div>
+                        <div class="problem-center problem-center--namecard">
+                            <img src="images/N.png" alt="経営課題に向き合うビジネスパーソン" width="320" height="280" loading="lazy">
+                        </div>
+                        <div class="problem-card problem-card--tr">
+                            <p class="problem-card__text">経営者視点を持つリーダーが不足している</p>
+                        </div>
+                        <div class="problem-card problem-card--bl">
+                            <p class="problem-card__text">管理職が部門最適に偏り、全社最適で判断できない</p>
+                        </div>
+                        <div class="problem-card problem-card--br">
+                            <p class="problem-card__text">DX・AIの技術はあるが、経営戦略につなぐ人材がいない</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="problem-story-wrap">
+            <div class="problem-story-wrap__bg js-parallax-problem-bg" aria-hidden="true"></div>
+            <div class="problem-story-wrap__overlay" aria-hidden="true"></div>
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="problem-story fade-in">
+                    <p class="problem-story__label">本質的な課題</p>
+                    <div class="problem-story__block">
+                        <p class="problem-story__p">多くの企業で起きているのは、<strong>「育てようとしていない」</strong>のではなく、<strong>「どう育成すればよいか見えていない」</strong>という課題です。</p>
+                        <p class="problem-story__p">経営シミュレーション体験を通じて、<strong>数字で語れる幹部</strong>を育成し、感覚経営から戦略経営へ。EXECUTIVE COMPASSは、上場企業が選ぶエグゼクティブ人材育成の羅針盤です。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXECUTIVE COMPASS とは（上部固定＋3枚画像がスクロールで横スライド） -->
+    <section id="about" class="reason-section">
+        <div class="reason-pin-wrap" data-slides="4">
+            <div class="reason-pinned">
+                <div class="reason-pinned__header">
+                    <h2 class="reason-pinned__title"><span class="reason-pinned__title-silver">EXECUTIVE</span><span class="reason-pinned__title-gold metallic-gold"> COMPASS</span> とは</h2>
+                    <p class="reason-pinned__desc">「EXECUTIVE COMPASS」は、企業の持続的成長を担うエグゼクティブ人材の育成を支援し、人的資本経営を加速させるための人材育成プログラムです。未来の経営人材を創るための<strong>羅針盤</strong>として機能します。</p>
+                </div>
+                <div class="reason-pinned__body">
+                    <div class="reason-track">
+                        <div class="reason-slide">
+                            <div class="reason-slide-img"><img src="images/about1.png" alt="明確な育成目的" width="900" height="600" loading="lazy"></div>
+                            <div class="reason-slide-num">01</div>
+                            <h3 class="reason-slide-title">明確な育成目的</h3>
+                            <p class="reason-slide-desc">急速な経営環境の変化に対応するため、「自ら考え行動する人材」の育成に焦点を当てた実践型プログラム</p>
+                        </div>
+                        <div class="reason-slide">
+                            <div class="reason-slide-img"><img src="images/about2.jpg" alt="経営シミュレーション" width="900" height="600" loading="lazy"></div>
+                            <div class="reason-slide-num">02</div>
+                            <h3 class="reason-slide-title">経営シミュレーション</h3>
+                            <p class="reason-slide-desc">ボードゲームを活用したアクティブ・ラーニングで、経営の実践力を楽しみながら体得できる独自手法</p>
+                        </div>
+                        <div class="reason-slide">
+                            <div class="reason-slide-img"><img src="images/about3.png" alt="実務への応用" width="900" height="600" loading="lazy"></div>
+                            <div class="reason-slide-num">03</div>
+                            <h3 class="reason-slide-title">実務への応用</h3>
+                            <p class="reason-slide-desc">シミュレーション後のフィードバック、実務課題への応用（PDCA改善サイクル）まで一貫支援</p>
+                        </div>
+                        <div class="reason-slide">
+                            <div class="reason-slide-img reason-slide-video">
+                                <video id="programVideo" src="videos/program-video.mp4" autoplay muted loop playsinline width="900" height="600"></video>
+                                <div class="video-controls">
+                                    <button type="button" class="video-control-btn" id="videoPlayPause" aria-label="再生・停止"><i class="fas fa-pause" aria-hidden="true"></i></button>
+                                    <button type="button" class="video-control-btn" id="videoMute" aria-label="音声の切り替え"><i class="fas fa-volume-up" aria-hidden="true"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 対象者（円形コンパス風） -->
+    <section id="target" class="section-dark target-section">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center target-header fade-in">
+                <h2 class="section-heading text-5xl md:text-6xl font-serif font-bold mb-8">
+                    <span class="metallic-silver">プログラム</span>
+                    <span class="metallic-gold">対象者</span>
+                </h2>
+                <div class="decorative-line mb-10"></div>
+                <p class="text-xl text-silver-medium font-light">
+                    企業の経営層および次世代リーダー候補者を幅広く対象としています
+                </p>
+            </div>
+            
+            <div class="target-compass js-compass-scroll">
+                <div class="target-compass__ring" aria-hidden="true">
+                    <div class="target-compass__ticks" aria-hidden="true"></div>
+                    <span class="target-compass__cardinal target-compass__cardinal--n">N</span>
+                    <span class="target-compass__cardinal target-compass__cardinal--e">E</span>
+                    <span class="target-compass__cardinal target-compass__cardinal--s">S</span>
+                    <span class="target-compass__cardinal target-compass__cardinal--w">W</span>
+                    <span class="target-compass__needle" aria-hidden="true"></span>
+                </div>
+                <div class="target-compass__rotator" aria-hidden="true">
+                <div class="target-compass__item target-compass__item--0" style="--item-angle: 0deg">
+                    <div class="target-compass__icon"><i class="fas fa-user-tie text-gold-accent"></i></div>
+                    <div class="target-compass__content">
+                        <h3 class="target-compass__title">取締役/執行役員候補</h3>
+                        <p class="target-compass__desc">経営層として必要な財務・戦略視点を習得</p>
+                    </div>
+                </div>
+                <div class="target-compass__item target-compass__item--1" style="--item-angle: 60deg">
+                    <div class="target-compass__icon"><i class="fas fa-crown text-gold-accent"></i></div>
+                    <div class="target-compass__content">
+                        <h3 class="target-compass__title">後継者</h3>
+                        <p class="target-compass__desc">次期経営者としての経営判断力と実践力を養成</p>
+                    </div>
+                </div>
+                <div class="target-compass__item target-compass__item--2" style="--item-angle: 120deg">
+                    <div class="target-compass__icon"><i class="fas fa-robot text-gold-accent"></i></div>
+                    <div class="target-compass__content">
+                        <h3 class="target-compass__title">AI開発リーダー</h3>
+                        <p class="target-compass__desc">技術と経営の両視点を持つリーダーを育成</p>
+                    </div>
+                </div>
+                <div class="target-compass__item target-compass__item--3" style="--item-angle: 180deg">
+                    <div class="target-compass__icon"><i class="fas fa-handshake text-gold-accent"></i></div>
+                    <div class="target-compass__content">
+                        <h3 class="target-compass__title">顧客フロント人材</h3>
+                        <p class="target-compass__desc">営業職に求められる経営数字の理解と提案力</p>
+                    </div>
+                </div>
+                <div class="target-compass__item target-compass__item--4" style="--item-angle: 240deg">
+                    <div class="target-compass__icon"><i class="fas fa-laptop-code text-gold-accent"></i></div>
+                    <div class="target-compass__content">
+                        <h3 class="target-compass__title">DX化推進人材</h3>
+                        <p class="target-compass__desc">経営視点でのデジタル変革をリードする力</p>
+                    </div>
+                </div>
+                <div class="target-compass__item target-compass__item--5" style="--item-angle: 300deg">
+                    <div class="target-compass__icon"><i class="fas fa-users-cog text-gold-accent"></i></div>
+                    <div class="target-compass__content">
+                        <h3 class="target-compass__title">管理職</h3>
+                        <p class="target-compass__desc">部門経営の視点で組織をリードする能力を強化</p>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5つの視点（左画像・右アコーディオン） -->
+    <section id="features" class="features-section">
+        <div class="features-layout">
+            <div class="features-visual">
+                <div class="features-visual__img-wrap">
+                    <img class="features-visual__img js-parallax-img" src="images/benefits-hero.png" alt="体感できる5つの視点" width="1200" height="800" loading="lazy">
+                </div>
+                <div class="features-visual__overlay"></div>
+                <div class="features-visual__caption">
+                    <p class="features-visual__label">Five Perspectives</p>
+                    <h2 class="features-visual__title">体得できる<em class="metallic-gold">５つの視点</em></h2>
+                </div>
+            </div>
+            <div class="features-content">
+                <div class="features-content__inner">
+                    <div class="features-content__intro">
+                        <span class="features-content__label">体感できる5つの視点</span>
+                        <h3 class="features-content__title">経営者として必須となる<br>５つの視点を実践的に習得</h3>
+                        <p class="features-content__lead">
+                            経営シミュレーション体験を通じて、数字で語れる幹部として必要な視点を身につけます。
+                        </p>
+                    </div>
+                    <div class="features-list">
+                        <div class="features-list__item">
+                            <span class="features-list__num">01</span>
+                            <div class="features-list__content">
+                                <h4 class="features-list__title">外部環境把握</h4>
+                                <p class="features-list__body">市場や競合の動向を分析し、経営判断に活かすスキルを習得します。変化の激しいビジネス環境において、的確な状況判断力を養成します。</p>
+                            </div>
+                        </div>
+                        <div class="features-list__item">
+                            <span class="features-list__num">02</span>
+                            <div class="features-list__content">
+                                <h4 class="features-list__title">企業会計原則</h4>
+                                <p class="features-list__body">経営者視点で財務諸表を理解し、健全な経営判断の基盤を構築します。数字から企業の実態を読み解く力を身につけます。</p>
+                            </div>
+                        </div>
+                        <div class="features-list__item">
+                            <span class="features-list__num">03</span>
+                            <div class="features-list__content">
+                                <h4 class="features-list__title">財務データ構造</h4>
+                                <p class="features-list__body">経営数字の関連性を理解し、戦略的意思決定を行う能力を養成します。P/L、B/S、C/Fの連動性を体感的に習得します。</p>
+                            </div>
+                        </div>
+                        <div class="features-list__item">
+                            <span class="features-list__num">04</span>
+                            <div class="features-list__content">
+                                <h4 class="features-list__title">人的資本配置</h4>
+                                <p class="features-list__body">組織の最適な人材配置と育成計画の策定方法を習得します。人的資本経営の実践に必要な視点と判断基準を獲得します。</p>
+                            </div>
+                        </div>
+                        <div class="features-list__item">
+                            <span class="features-list__num">05</span>
+                            <div class="features-list__content">
+                                <h4 class="features-list__title">リスクコントロール</h4>
+                                <p class="features-list__body">経営リスクを予測し、対応策を講じる実践的スキルを体得します。未然にリスクを察知し、適切な対処ができる経営感覚を養います。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="features-cta-wrap">
+                        <a href="#flow" class="features-cta">プログラム内容を見る <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- プログラム内容 -->
+    <section id="flow" class="section-flow section-dark">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center mb-20 fade-in">
+                <h2 class="section-heading text-5xl md:text-6xl font-serif font-bold mb-8">
+                    <span class="metallic-silver">プログラム</span>
+                    <span class="metallic-gold">内容</span>
+                </h2>
+                <div class="decorative-line mb-10"></div>
+                <p class="text-xl text-silver-medium font-light">
+                    経営シミュレーション体験を軸とした、体系的な学習プロセス
+                </p>
+            </div>
+            
+            <div class="max-w-6xl mx-auto">
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="luxury-card p-10 rounded-3xl relative fade-in">
+                        <div class="text-center mb-8">
+                            <div class="w-24 h-24 bg-gradient-to-br from-gold-accent to-yellow-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-2xl border-4 border-navy-dark">
+                                <span class="text-navy-dark text-4xl font-bold font-sans-alt">1</span>
+                            </div>
+                            <h3 class="text-2xl font-serif font-bold text-silver-light">経営シミュレーション</h3>
+                        </div>
+                        <div class="space-y-4 text-silver-medium">
+                            <p class="flex items-start">
+                                <i class="fas fa-check-circle text-gold-accent mt-1 mr-3"></i>
+                                <span>ボードゲーム形式で会社を起業・経営</span>
+                            </p>
+                            <p class="flex items-start">
+                                <i class="fas fa-check-circle text-gold-accent mt-1 mr-3"></i>
+                                <span>意思決定プロセスの実践</span>
+                            </p>
+                            <p class="flex items-start">
+                                <i class="fas fa-check-circle text-gold-accent mt-1 mr-3"></i>
+                                <span>経営者視点での判断力養成</span>
+                            </p>
+                            <p class="flex items-start">
+                                <i class="fas fa-check-circle text-gold-accent mt-1 mr-3"></i>
+                                <span>アクティブ・ラーニング手法</span>
+                            </p>
+                        </div>
+                        <div class="hidden md:block absolute -right-6 top-1/2 transform -translate-y-1/2">
+                            <i class="fas fa-arrow-right text-5xl text-gold-accent/30"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="luxury-card p-10 rounded-3xl relative fade-in">
+                        <div class="text-center mb-8">
+                            <div class="w-24 h-24 bg-gradient-to-br from-gold-accent to-yellow-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-2xl border-4 border-navy-dark">
+                                <span class="text-navy-dark text-4xl font-bold font-sans-alt">2</span>
+                            </div>
+                            <h3 class="text-2xl font-serif font-bold text-silver-light">フィードバック</h3>
+                        </div>
+                        <div class="space-y-4 text-silver-medium">
+                            <p class="flex items-start">
+                                <i class="fas fa-check-circle text-gold-accent mt-1 mr-3"></i>
+                                <span>専門講師による振り返り</span>
+                            </p>
+                            <p class="flex items-start">
+                                <i class="fas fa-check-circle text-gold-accent mt-1 mr-3"></i>
+                                <span>経営数字の分析と解説</span>
+                            </p>
+                            <p class="flex items-start">
+                                <i class="fas fa-check-circle text-gold-accent mt-1 mr-3"></i>
+                                <span>意思決定の妥当性検証</span>
+                            </p>
+                            <p class="flex items-start">
+                                <i class="fas fa-check-circle text-gold-accent mt-1 mr-3"></i>
+                                <span>改善ポイントの明確化</span>
+                            </p>
+                        </div>
+                        <div class="hidden md:block absolute -right-6 top-1/2 transform -translate-y-1/2">
+                            <i class="fas fa-arrow-right text-5xl text-gold-accent/30"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="luxury-card p-10 rounded-3xl fade-in">
+                        <div class="text-center mb-8">
+                            <div class="w-24 h-24 bg-gradient-to-br from-gold-accent to-yellow-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-2xl border-4 border-navy-dark">
+                                <span class="text-navy-dark text-4xl font-bold font-sans-alt">3</span>
+                            </div>
+                            <h3 class="text-2xl font-serif font-bold text-silver-light">実務への応用</h3>
+                        </div>
+                        <div class="space-y-4 text-silver-medium">
+                            <p class="flex items-start">
+                                <i class="fas fa-check-circle text-gold-accent mt-1 mr-3"></i>
+                                <span>自社課題への適用支援</span>
+                            </p>
+                            <p class="flex items-start">
+                                <i class="fas fa-check-circle text-gold-accent mt-1 mr-3"></i>
+                                <span>PDCA改善サイクル構築</span>
+                            </p>
+                            <p class="flex items-start">
+                                <i class="fas fa-check-circle text-gold-accent mt-1 mr-3"></i>
+                                <span>継続的な成長支援</span>
+                            </p>
+                            <p class="flex items-start">
+                                <i class="fas fa-check-circle text-gold-accent mt-1 mr-3"></i>
+                                <span>フォローアップ体制</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-16 luxury-card p-10 rounded-3xl fade-in border border-gold-accent/30">
+                    <div class="flex items-center justify-center mb-6">
+                        <i class="fas fa-lightbulb text-5xl text-gold-accent mr-5"></i>
+                        <h3 class="text-3xl font-serif font-bold text-silver-light">アクティブ・ラーニングの効果</h3>
+                    </div>
+                    <p class="text-center text-lg text-silver-medium leading-relaxed">
+                        座学では得られない「経営の実践力」を、ゲーム形式の体験を通じて楽しみながら習得。<br>
+                        参加者同士の相互作用により、多角的な視点と深い学びを実現します。
+                    </p>
+                </div>
+            </div>
+
+            <!-- 流れる文字 -->
+            <div class="newsletter-block" id="newsletter" aria-hidden="true">
+                <div class="newsletter-block__track">
+                    <span>HEART &amp; BRAIN</span>
+                    <span>EXECUTIVE <span class="newsletter-block__gold">COMPASS</span></span>
+                    <span>HEART &amp; BRAIN</span>
+                    <span>EXECUTIVE <span class="newsletter-block__gold">COMPASS</span></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 導入効果 -->
+    <section id="benefits" class="section-benefits section-navy">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center mb-20 fade-in">
+                <h2 class="section-heading text-5xl md:text-6xl font-serif font-bold mb-8">
+                    <span class="metallic-silver">プログラム</span>
+                    <span class="metallic-gold">導入効果</span>
+                </h2>
+                <div class="decorative-line mb-10"></div>
+                <p class="text-xl text-silver-medium font-light mt-8">
+                    多くの上場企業が導入し、確かな成果を実感しています
+                </p>
+            </div>
+            
+            <!-- タイムライン型 導入効果（4ステップ） -->
+            <div class="benefits-timeline fade-in">
+                <div class="benefits-timeline__track">
+                    <div class="benefits-timeline__line benefits-timeline__line--lg" aria-hidden="true"></div>
+                    <div class="benefits-timeline__line benefits-timeline__line--sm" aria-hidden="true"></div>
+                    <div class="benefits-timeline__grid">
+                    <!-- Step 01: 経営視点の獲得 -->
+                    <div class="benefits-timeline__item benefits-timeline__item--1">
+                        <div class="benefits-timeline__watermark" aria-hidden="true">改善</div>
+                        <div class="benefits-timeline__content benefits-timeline__content--below">
+                            <h3 class="benefits-timeline__title">経営視点の獲得</h3>
+                            <p class="benefits-timeline__desc">部分最適ではなく全体最適で考える経営者マインドの醸成</p>
+                        </div>
+                        <div class="benefits-timeline__node">
+                            <div class="benefits-timeline__icon benefits-timeline__icon--circle">
+                                <i class="fas fa-brain" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Step 02: 財務理解の深化 -->
+                    <div class="benefits-timeline__item benefits-timeline__item--2">
+                        <div class="benefits-timeline__watermark" aria-hidden="true">効率</div>
+                        <div class="benefits-timeline__node benefits-timeline__node--top">
+                            <div class="benefits-timeline__connector benefits-timeline__connector--up"></div>
+                            <div class="benefits-timeline__icon benefits-timeline__icon--diamond">
+                                <i class="fas fa-chart-pie" aria-hidden="true"></i>
+                            </div>
+                            <div class="benefits-timeline__connector benefits-timeline__connector--sm" aria-hidden="true"></div>
+                        </div>
+                        <div class="benefits-timeline__content benefits-timeline__content--above">
+                            <h3 class="benefits-timeline__title">財務理解の深化</h3>
+                            <p class="benefits-timeline__desc">経営数字に強い人材の育成と財務的意思決定力の向上</p>
+                        </div>
+                    </div>
+                    <!-- Step 03: 組織力の強化 -->
+                    <div class="benefits-timeline__item benefits-timeline__item--3">
+                        <div class="benefits-timeline__watermark" aria-hidden="true">戦略</div>
+                        <div class="benefits-timeline__content benefits-timeline__content--below">
+                            <h3 class="benefits-timeline__title">組織力の強化</h3>
+                            <p class="benefits-timeline__desc">次世代リーダーの計画的育成と組織の持続的成長</p>
+                        </div>
+                        <div class="benefits-timeline__node">
+                            <div class="benefits-timeline__icon benefits-timeline__icon--circle">
+                                <i class="fas fa-users" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Step 04: 行動変容の促進 -->
+                    <div class="benefits-timeline__item benefits-timeline__item--4">
+                        <div class="benefits-timeline__watermark" aria-hidden="true">成長</div>
+                        <div class="benefits-timeline__node benefits-timeline__node--top">
+                            <div class="benefits-timeline__icon benefits-timeline__icon--diamond">
+                                <i class="fas fa-rocket" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        <div class="benefits-timeline__content benefits-timeline__content--above">
+                            <h3 class="benefits-timeline__title">行動変容の促進</h3>
+                            <p class="benefits-timeline__desc">自ら考え行動する主体的な人材への成長を実現</p>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            
+            <!-- 導入企業の声＋カード下に流れるロゴ -->
+            <div class="benefits-voices-with-logos">
+            <div class="benefits-voices max-w-6xl mx-auto mb-16">
+                <div class="text-center mb-12 fade-in">
+                    <h3 class="text-3xl md:text-4xl font-serif font-bold text-silver-light mb-4"><span class="metallic-gold">導入企業</span>の声</h3>
+                </div>
+                <div class="grid md:grid-cols-2 gap-6 fade-in">
+                    <div class="benefits-voice-card">
+                        <div class="benefits-voice-card__header">
+                            <div class="benefits-voice-card__logo">
+                                <img src="images/C_banner/clients_banner_1.png" alt="導入企業ロゴ" width="90" height="70" loading="lazy">
+                            </div>
+                            <div class="benefits-voice-card__company">
+                                <div class="benefits-voice-card__company-name">〇〇株式会社 様</div>
+                                <div class="benefits-voice-card__company-detail">業種: 製造業 / 従業員数: 約500名</div>
+                            </div>
+                        </div>
+                        <div class="benefits-voice-card__quote">
+                            <span class="benefits-voice-card__quote-mark benefits-voice-card__quote-mark--open">"</span>
+                            <div class="benefits-voice-card__quote-inner">
+                                <p class="benefits-voice-card__quote-main">EXECUTIVE COMPASSの導入により、若手リーダー層の経営視点が劇的に変化しました。数字への意識が高まり、現場での意思決定スピードが加速しています。</p>
+                                <p class="benefits-voice-card__quote-sub">座学では決して得られない実践的な経営感覚を、次世代リーダー候補に効果的に習得させることができました。特に財務数字への理解度が飛躍的に向上し、経営会議での発言の質が明らかに変わりました。</p>
+                            </div>
+                            <span class="benefits-voice-card__quote-mark benefits-voice-card__quote-mark--close">"</span>
+                        </div>
+                        <div class="benefits-voice-card__footer">
+                            <div class="benefits-voice-card__person">
+                                <div class="benefits-voice-card__person-title">人事部長</div>
+                                <div class="benefits-voice-card__person-name">〇〇 〇〇 様</div>
+                            </div>
+                            <div class="benefits-voice-card__photo">
+                                <img src="images/Screenshot%202026-03-02%20at%2020.56.16.png" alt="お客様" width="44" height="44" loading="lazy" class="benefits-voice-card__photo-img">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="benefits-voice-card">
+                        <div class="benefits-voice-card__header">
+                            <div class="benefits-voice-card__logo">
+                                <img src="images/C_banner/clients_banner_13.png" alt="導入企業ロゴ" width="90" height="70" loading="lazy">
+                            </div>
+                            <div class="benefits-voice-card__company">
+                                <div class="benefits-voice-card__company-name">△△株式会社 様</div>
+                                <div class="benefits-voice-card__company-detail">業種: ITサービス / 従業員数: 約300名</div>
+                            </div>
+                        </div>
+                        <div class="benefits-voice-card__quote">
+                            <span class="benefits-voice-card__quote-mark benefits-voice-card__quote-mark--open">"</span>
+                            <div class="benefits-voice-card__quote-inner">
+                                <p class="benefits-voice-card__quote-main">DX推進リーダーに経営視点を持たせることが課題でしたが、このプログラムで技術と経営の両面を理解する人材育成に成功しました。</p>
+                                <p class="benefits-voice-card__quote-sub">投資対効果を意識した提案ができるようになり、事業成果に直結しています。経営会議での議論の質が変わり、意思決定が早くなりました。</p>
+                            </div>
+                            <span class="benefits-voice-card__quote-mark benefits-voice-card__quote-mark--close">"</span>
+                        </div>
+                        <div class="benefits-voice-card__footer">
+                            <div class="benefits-voice-card__person">
+                                <div class="benefits-voice-card__person-title">経営企画室長</div>
+                                <div class="benefits-voice-card__person-name">〇〇 〇〇 様</div>
+                            </div>
+                            <div class="benefits-voice-card__photo">
+                                <img src="images/Screenshot%202026-03-02%20at%2020.56.28.png" alt="お客様" width="44" height="44" loading="lazy" class="benefits-voice-card__photo-img">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 導入企業一覧 見出し -->
+            <div class="text-center mb-6 fade-in">
+                <h3 class="benefits-logos-heading"><span class="metallic-gold">導入企業</span>一覧</h3>
+            </div>
+            <!-- 企業ロゴ流れ（カード下・3行） -->
+            <div class="benefits-logos-bg" aria-hidden="true">
+                <div class="benefits-logos-row benefits-logos-row--1">
+                    <div class="benefits-logos-track">
+                    <div class="benefits-logos-slide">
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_7.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_24.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_3.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_18.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_31.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_12.png" alt="導入企業"></div>
+                    </div>
+                    <div class="benefits-logos-slide" aria-hidden="true">
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_7.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_24.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_3.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_18.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_31.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_12.png" alt="導入企業"></div>
+                    </div>
+                    <div class="benefits-logos-slide" aria-hidden="true">
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_7.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_24.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_3.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_18.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_31.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_12.png" alt="導入企業"></div>
+                    </div>
+                    </div>
+                </div>
+                <div class="benefits-logos-row benefits-logos-row--2">
+                    <div class="benefits-logos-track">
+                    <div class="benefits-logos-slide">
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_5.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_29.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_14.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_9.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_26.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_33.png" alt="導入企業"></div>
+                    </div>
+                    <div class="benefits-logos-slide" aria-hidden="true">
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_5.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_29.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_14.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_9.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_26.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_33.png" alt="導入企業"></div>
+                    </div>
+                    <div class="benefits-logos-slide" aria-hidden="true">
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_5.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_29.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_14.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_9.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_26.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_33.png" alt="導入企業"></div>
+                    </div>
+                    </div>
+                </div>
+                <div class="benefits-logos-row benefits-logos-row--3">
+                    <div class="benefits-logos-track">
+                    <div class="benefits-logos-slide">
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_21.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_6.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_27.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_11.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_34.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_19.png" alt="導入企業"></div>
+                    </div>
+                    <div class="benefits-logos-slide" aria-hidden="true">
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_21.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_6.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_27.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_11.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_34.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_19.png" alt="導入企業"></div>
+                    </div>
+                    <div class="benefits-logos-slide" aria-hidden="true">
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_21.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_6.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_27.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_11.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_34.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_19.png" alt="導入企業"></div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- お問い合わせ -->
+    <section id="contact" class="contact-section section-contact section-dark relative overflow-hidden">
+        <div class="contact-section__bg" aria-hidden="true"></div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-4xl mx-auto text-center mb-16">
+                <h2 class="section-heading text-5xl md:text-6xl font-serif font-bold mb-8">
+                    <span class="metallic-silver">まずは</span>
+                    <span class="metallic-gold">無料相談</span>
+                    <span class="metallic-silver">から</span>
+                </h2>
+                <div class="decorative-line mb-10"></div>
+                <p class="text-xl text-silver-medium leading-relaxed font-light">
+                    貴社の人材育成課題をお聞かせください。<br>
+                    最適なプログラムをご提案いたします。
+                </p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto contact-card">
+                <form id="contactForm" class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-silver-light font-medium mb-3">企業名 <span class="text-gold-accent">*</span></label>
+                            <input type="text" required class="w-full px-5 py-4 bg-navy-dark/50 border border-silver-dark/30 rounded-xl focus:ring-2 focus:ring-gold-accent focus:border-transparent transition text-silver-light placeholder-silver-dark/50" placeholder="株式会社○○">
+                        </div>
+                        <div>
+                            <label class="block text-silver-light font-medium mb-3">ご担当者名 <span class="text-gold-accent">*</span></label>
+                            <input type="text" required class="w-full px-5 py-4 bg-navy-dark/50 border border-silver-dark/30 rounded-xl focus:ring-2 focus:ring-gold-accent focus:border-transparent transition text-silver-light placeholder-silver-dark/50" placeholder="山田 太郎">
+                        </div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-silver-light font-medium mb-3">メールアドレス <span class="text-gold-accent">*</span></label>
+                            <input type="email" required class="w-full px-5 py-4 bg-navy-dark/50 border border-silver-dark/30 rounded-xl focus:ring-2 focus:ring-gold-accent focus:border-transparent transition text-silver-light placeholder-silver-dark/50" placeholder="example@company.co.jp">
+                        </div>
+                        <div>
+                            <label class="block text-silver-light font-medium mb-3">電話番号 <span class="text-gold-accent">*</span></label>
+                            <input type="tel" required class="w-full px-5 py-4 bg-navy-dark/50 border border-silver-dark/30 rounded-xl focus:ring-2 focus:ring-gold-accent focus:border-transparent transition text-silver-light placeholder-silver-dark/50" placeholder="03-1234-5678">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-silver-light font-medium mb-3">対象人数</label>
+                        <select class="w-full px-5 py-4 bg-navy-dark/50 border border-silver-dark/30 rounded-xl focus:ring-2 focus:ring-gold-accent focus:border-transparent transition text-silver-light">
+                            <option>10名未満</option>
+                            <option>10〜30名</option>
+                            <option>30〜50名</option>
+                            <option>50名以上</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-silver-light font-medium mb-3">お問い合わせ内容 <span class="text-gold-accent">*</span></label>
+                        <textarea required rows="5" class="w-full px-5 py-4 bg-navy-dark/50 border border-silver-dark/30 rounded-xl focus:ring-2 focus:ring-gold-accent focus:border-transparent transition text-silver-light placeholder-silver-dark/50" placeholder="人材育成の課題や、プログラムについてのご質問など、お気軽にお書きください"></textarea>
+                    </div>
+                    
+                    <div class="flex items-start space-x-3">
+                        <input type="checkbox" required class="mt-1 w-5 h-5 text-gold-accent bg-navy-dark/50 border-silver-dark/30 rounded">
+                        <label class="text-sm text-silver-medium">
+                            <a href="#" class="text-gold-accent underline">プライバシーポリシー</a>に同意します <span class="text-gold-accent">*</span>
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="contact-card__submit">
+                        <i class="fas fa-paper-plane mr-3" aria-hidden="true"></i>
+                        無料相談・資料請求を申し込む
+                    </button>
+                </form>
+                
+                <div class="contact-card__info">
+                    <div class="flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-12 text-silver-medium">
+                        <div class="flex items-center">
+                            <i class="fas fa-phone text-gold-accent text-2xl mr-4"></i>
+                            <div>
+                                <div class="text-xs text-silver-dark uppercase tracking-wider mb-1">お電話でのお問い合わせ</div>
+                                <div class="font-bold text-lg font-sans-alt">03-1234-5678</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-clock text-gold-accent text-2xl mr-4"></i>
+                            <div>
+                                <div class="text-xs text-silver-dark uppercase tracking-wider mb-1">受付時間</div>
+                                <div class="font-bold text-lg font-sans-alt">平日 9:00-18:00</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-disclaimer">
+                <p class="text-silver-dark text-sm">
+                    <i class="fas fa-lock mr-2"></i>
+                    お客様の情報は厳重に管理し、プログラムのご案内以外には使用いたしません
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- カーソルに追随するコンパス -->
+    <div class="cursor-compass" id="cursorCompass" aria-hidden="true">
+        <img src="images/CTA.png" alt="">
+    </div>
+
+    <!-- 右下ふわっと表示の無料体験受付中ボタン -->
+    <div class="cta-float" id="ctaFloat" role="complementary" aria-label="無料体験実施中">
+        <a href="#" class="cta-float__link" aria-label="無料体験のお問い合わせ">
+            <img src="images/cta-float.png" alt="無料体験実施中　お問い合わせはこちら" width="200" height="130" loading="lazy">
+        </a>
+    </div>
+
+    <!-- フッター -->
+    <footer class="footer">
+        <div class="footer__inner">
+            <div class="footer__main">
+                <div class="footer__brand">
+                    <div class="footer__logo-wrap">
+                        <img src="images/CTA.png" alt="" class="footer__logo-img" width="44" height="44">
+                        <h3 class="footer__title">
+                            <span class="footer__logo-executive">EXECUTIVE</span>
+                            <span class="footer__logo-compass"> COMPASS</span>
+                        </h3>
+                    </div>
+                    <p class="footer__tagline">未来の経営人材を創る羅針盤</p>
+                </div>
+                
+                <nav class="footer__nav" aria-label="フッターナビゲーション">
+                    <a href="#problem" class="footer__nav-link">課題</a>
+                    <a href="#about" class="footer__nav-link">COMPASSとは</a>
+                    <a href="#target" class="footer__nav-link">対象者</a>
+                    <a href="#flow" class="footer__nav-link">プログラム</a>
+                    <a href="#benefits" class="footer__nav-link">導入効果</a>
+                </nav>
+            </div>
+            
+            <div class="footer__bottom">
+                <div class="footer__decorative-line"></div>
+                <p class="footer__copyright">&copy; 2026 EXECUTIVE COMPASS. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Swiper -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
