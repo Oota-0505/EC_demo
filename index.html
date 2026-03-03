@@ -24,7 +24,9 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="antialiased" id="top">
-    
+    <script>
+(function(){if(/[?&]print=1/.test(location.search))document.documentElement.classList.add('print-mode');})();
+    </script>
     <!-- ヘッダー（ロゴ画像・ビジネス寄り堅いデザイン） -->
     <header class="header" id="siteHeader">
         <div class="header-inner">
@@ -46,10 +48,25 @@
                 <a href="#contact" class="header__cta">お問い合わせ</a>
             </div>
             <button type="button" class="header__menu-toggle" aria-label="メニューを開く" aria-expanded="false">
-                <span></span><span></span><span></span>
+                <i class="fas fa-bars header__menu-icon header__menu-icon--open" aria-hidden="true"></i>
+                <i class="fas fa-times header__menu-icon header__menu-icon--close" aria-hidden="true"></i>
             </button>
         </div>
     </header>
+
+    <!-- モバイルメニューオーバーレイ（768px未満のみ表示） -->
+    <div id="mobileNav" class="mobile-nav" aria-hidden="true">
+        <nav class="mobile-nav__panel">
+            <ul class="mobile-nav__list">
+                <li><a href="#problem">課題</a></li>
+                <li><a href="#about">COMPASSとは</a></li>
+                <li><a href="#target">対象者</a></li>
+                <li><a href="#flow">プログラム</a></li>
+                <li><a href="#benefits">導入効果</a></li>
+                <li class="mobile-nav__cta"><a href="#contact">お問い合わせ</a></li>
+            </ul>
+        </nav>
+    </div>
 
     <!-- ヒーローセクション（LOSSCAN-style KV・3枚スライド＋右縦パギネーション） -->
     <section class="kv js-parallax-hero">
@@ -327,11 +344,11 @@
                     <span class="metallic-gold">内容</span>
                 </h2>
                 <div class="decorative-line mb-10"></div>
-                <p class="text-xl text-silver-medium font-light">
+                <p class="text-xl text-silver-medium font-light mt-8">
                     経営シミュレーション体験を軸とした、体系的な学習プロセス
                 </p>
             </div>
-            
+
             <div class="max-w-6xl mx-auto">
                 <div class="grid md:grid-cols-3 gap-8">
                     <div class="luxury-card p-10 rounded-3xl relative fade-in">
@@ -468,7 +485,7 @@
                     <div class="benefits-timeline__grid">
                     <!-- Step 01: 経営視点の獲得 -->
                     <div class="benefits-timeline__item benefits-timeline__item--1">
-                        <div class="benefits-timeline__watermark" aria-hidden="true">改善</div>
+                        <div class="benefits-timeline__watermark" aria-hidden="true">経営</div>
                         <div class="benefits-timeline__content benefits-timeline__content--below">
                             <h3 class="benefits-timeline__title">経営視点の獲得</h3>
                             <p class="benefits-timeline__desc">部分最適ではなく全体最適で考える経営者マインドの醸成</p>
@@ -481,7 +498,7 @@
                     </div>
                     <!-- Step 02: 財務理解の深化 -->
                     <div class="benefits-timeline__item benefits-timeline__item--2">
-                        <div class="benefits-timeline__watermark" aria-hidden="true">効率</div>
+                        <div class="benefits-timeline__watermark" aria-hidden="true">財務</div>
                         <div class="benefits-timeline__node benefits-timeline__node--top">
                             <div class="benefits-timeline__connector benefits-timeline__connector--up"></div>
                             <div class="benefits-timeline__icon benefits-timeline__icon--diamond">
@@ -496,7 +513,7 @@
                     </div>
                     <!-- Step 03: 組織力の強化 -->
                     <div class="benefits-timeline__item benefits-timeline__item--3">
-                        <div class="benefits-timeline__watermark" aria-hidden="true">戦略</div>
+                        <div class="benefits-timeline__watermark" aria-hidden="true">組織</div>
                         <div class="benefits-timeline__content benefits-timeline__content--below">
                             <h3 class="benefits-timeline__title">組織力の強化</h3>
                             <p class="benefits-timeline__desc">次世代リーダーの計画的育成と組織の持続的成長</p>
@@ -509,7 +526,7 @@
                     </div>
                     <!-- Step 04: 行動変容の促進 -->
                     <div class="benefits-timeline__item benefits-timeline__item--4">
-                        <div class="benefits-timeline__watermark" aria-hidden="true">成長</div>
+                        <div class="benefits-timeline__watermark" aria-hidden="true">変容</div>
                         <div class="benefits-timeline__node benefits-timeline__node--top">
                             <div class="benefits-timeline__icon benefits-timeline__icon--diamond">
                                 <i class="fas fa-rocket" aria-hidden="true"></i>
@@ -696,7 +713,7 @@
                     <span class="metallic-silver">から</span>
                 </h2>
                 <div class="decorative-line mb-10"></div>
-                <p class="text-xl text-silver-medium leading-relaxed font-light">
+                <p class="text-xl text-silver-medium leading-relaxed font-light mt-8">
                     貴社の人材育成課題をお聞かせください。<br>
                     最適なプログラムをご提案いたします。
                 </p>

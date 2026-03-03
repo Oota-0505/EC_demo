@@ -422,49 +422,49 @@ function initVideoControls() {
     }
 }
 
-// モバイルメニュー（ヘッダー .is-open トグル）
+// モバイルメニュー（body.menu-open でオーバーレイ表示）
 function initMobileMenu() {
-    var header = document.querySelector('.header');
     var toggle = document.querySelector('.header__menu-toggle');
-    var navLinks = header && header.querySelectorAll('.header__nav-list a');
-    if (!header || !toggle) return;
+    var mobileNav = document.getElementById('mobileNav');
+    var navLinks = mobileNav ? mobileNav.querySelectorAll('a') : [];
+    if (!toggle || !mobileNav) return;
 
     function closeMenu() {
-        header.classList.remove('is-open');
+        document.body.classList.remove('menu-open');
         document.body.style.overflow = '';
         toggle.setAttribute('aria-expanded', 'false');
         toggle.setAttribute('aria-label', 'メニューを開く');
+        mobileNav.setAttribute('aria-hidden', 'true');
     }
 
     function openMenu() {
-        header.classList.add('is-open');
+        document.body.classList.add('menu-open');
         document.body.style.overflow = 'hidden';
         toggle.setAttribute('aria-expanded', 'true');
         toggle.setAttribute('aria-label', 'メニューを閉じる');
+        mobileNav.setAttribute('aria-hidden', 'false');
     }
 
     toggle.addEventListener('click', function(e) {
         e.preventDefault();
         e.stopPropagation();
-        if (header.classList.contains('is-open')) {
+        if (document.body.classList.contains('menu-open')) {
             closeMenu();
         } else {
             openMenu();
         }
     });
 
-    if (navLinks && navLinks.length) {
-        navLinks.forEach(function(link) {
-            link.addEventListener('click', function() {
-                closeMenu();
-            });
-        });
-    }
+    navLinks.forEach(function(link) {
+        link.addEventListener('click', closeMenu);
+    });
+
+    mobileNav.addEventListener('click', function(e) {
+        if (!e.target.closest('a')) closeMenu();
+    });
 
     window.addEventListener('resize', function() {
-        if (window.innerWidth >= 768) {
-            closeMenu();
-        }
+        if (window.innerWidth >= 768) closeMenu();
     });
 }
 
