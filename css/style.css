@@ -18,44 +18,45 @@
             font-family: 'Noto Sans JP', sans-serif;
             background-color: var(--navy-dark);
             color: var(--silver-light);
-            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2" fill="%23c9a961"/><circle cx="12" cy="12" r="4" fill="%23c9a961" opacity="0.4"/></svg>') 12 12, auto;
         }
-        a, button, [role="button"] {
-            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2" fill="%23c9a961"/><circle cx="12" cy="12" r="4" fill="%23c9a961" opacity="0.4"/></svg>') 12 12, pointer;
-        }
-        .cursor-compass {
+        /* カスタム針カーソル（標準カーソル非表示は .cursor-needle-active 時のみ） */
+        body.cursor-needle-active * { cursor: none !important; }
+        body.cursor-needle-active { cursor: none !important; }
+        /* 羅針盤の針：位置は JS で transform 指定・点滅は opacity + ゴールド光 */
+        .cursor-needle {
             position: fixed;
-            width: 72px;
-            height: 72px;
-            margin-left: -36px;
-            margin-top: -36px;
+            left: 0;
+            top: 0;
+            width: 48px;
+            height: 48px;
+            margin-left: -24px;
+            margin-top: -24px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><defs><linearGradient id="gn" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="%23e8d5a3"/><stop offset="50%" stop-color="%23c9a961"/><stop offset="100%" stop-color="%23a68b4a"/></linearGradient></defs><polygon points="16,16 25,27 19,29" fill="url(%23gn)" stroke="%23b0904f" stroke-width="0.9"/><circle cx="21" cy="28" r="1.8" fill="%232a2214" opacity="0.9"/></svg>');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
             pointer-events: none;
             z-index: 99999;
             opacity: 0;
-            transition: opacity .2s ease;
+            transition: opacity .15s ease-out;
+            will-change: transform;
         }
-        .cursor-compass.is-visible {
-            opacity: 0.9;
+        .cursor-needle.is-visible {
+            opacity: 1;
+            animation: cursor-needle-blink 1.1s ease-in-out infinite;
         }
-        /* ハンバーガーメニュー時は羅針盤を非表示 */
+        @keyframes cursor-needle-blink {
+            0%, 100% { filter: brightness(1) drop-shadow(0 0 4px rgba(201,169,97,0.5)); }
+            50% { filter: brightness(1.35) drop-shadow(0 0 12px rgba(201,169,97,0.85)); }
+        }
         @media (max-width: 767px) {
-            .cursor-compass {
-                opacity: 0 !important;
-                visibility: hidden;
-                pointer-events: none;
-            }
+            .cursor-needle { display: none !important; }
+            body.cursor-needle-active,
+            body.cursor-needle-active * { cursor: revert !important; }
         }
-        body.menu-open .cursor-compass {
-            opacity: 0 !important;
-            visibility: hidden;
-            pointer-events: none;
-        }
-        .cursor-compass img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-        
+        body.menu-open .cursor-needle { opacity: 0 !important; }
+        html.print-mode .cursor-needle { display: none !important; }
+
         .font-serif {
             font-family: 'Cormorant Garamond', serif;
         }
@@ -78,7 +79,7 @@
             .kv { height: 88vh; min-height: 520px; }
             .kv__title-line { font-size: clamp(1.35rem, 4.5vw, 2.25rem); }
             .kv__label { font-size: clamp(0.75rem, 2vw, 0.9rem); }
-            .kv__lead { font-size: clamp(0.9rem, 2.5vw, 1.05rem); }
+            .kv__lead { font-size: clamp(1.05rem, 2.8vw, 1.3rem); }
             .kv__sub { font-size: clamp(0.75rem, 2vw, 0.9rem); }
             .kv__actions { flex-direction: column; align-items: stretch; }
             .kv__btn, .kv__btn-outline { width: 100%; min-width: 0; justify-content: center; padding: 14px 32px; font-size: 0.9rem; box-sizing: border-box; }
@@ -86,7 +87,7 @@
         @media (max-width: 480px) {
             .kv__title-line { font-size: clamp(1.15rem, 5vw, 1.75rem); }
             .kv__label { font-size: 0.7rem; }
-            .kv__lead { font-size: 0.85rem; }
+            .kv__lead { font-size: 1rem; }
             .kv__sub { font-size: 0.75rem; }
             .kv__btn, .kv__btn-outline { padding: 12px 24px; font-size: 0.85rem; }
         }
@@ -235,17 +236,17 @@
         }
 
         .kv__lead {
-            font-size: clamp(1rem, 1.35vw, 1.2rem);
+            font-size: clamp(1.2rem, 1.8vw, 1.5rem);
             font-weight: 600;
             color: rgba(232, 236, 241, .95);
-            line-height: 1.9;
+            line-height: 2;
             padding-left: 16px;
             border-left: 2px solid rgba(201, 169, 97, .6);
             margin-bottom: 24px;
             opacity: 0;
             animation: kvUp .8s cubic-bezier(0.4, 0, 0.2, 1) forwards .8s;
         }
-        .kv__lead p { margin-bottom: 2px; }
+        .kv__lead p { margin-bottom: 0.35em; }
         .kv__lead p:last-child { margin-bottom: 0; }
         .kv__lead-accent {
             color: var(--gold-accent);
@@ -387,6 +388,10 @@
         .problem-section {
             background: linear-gradient(180deg, var(--navy-dark) 0%, var(--navy-primary) 100%);
             padding: 0;
+        }
+        /* 本質的な課題ブロック（背景ごと）を非表示。戻す場合はこのルールを削除またはコメントアウト */
+        .problem-story-wrap {
+            display: none !important;
         }
         .problem-pin-wrap {
             height: 260vh;
@@ -623,7 +628,7 @@
         }
         .reason-pin-wrap {
             width: 100%;
-            height: 400vh;
+            height: 260vh;
             position: relative;
             background: linear-gradient(180deg, var(--navy-primary) 0%, var(--navy-dark) 100%);
             color: var(--silver-light);
@@ -682,6 +687,10 @@
             text-align: center;
         }
         .reason-pinned__desc strong { color: var(--gold-accent); font-weight: 600; }
+        /* 4番目スライド（動画）を非表示。戻す場合はこのルールを削除し index.html の data-slides="4" に戻す */
+        .reason-track .reason-slide:nth-child(4) {
+            display: none !important;
+        }
         .reason-pinned__body {
             flex: 1;
             min-height: 0;
@@ -1118,7 +1127,9 @@
             transform: translateY(-1px);
             box-shadow: 0 4px 16px rgba(201, 169, 97, .4), inset 0 1px 0 rgba(255, 255, 255, .3);
         }
+        /* お問い合わせ下部の電話案内を一時的に非表示（戻すときは display を削除） */
         .contact-card__info {
+            display: none !important;
             margin-top: 2.5rem;
             padding-top: 2rem;
             border-top: 1px solid rgba(232, 236, 241, 0.12);
@@ -1197,6 +1208,17 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             filter: drop-shadow(0 0 12px rgba(201, 169, 97, 0.5));
+        }
+        /* 送信完了トースト等（main.js の showSuccessMessage で使用） */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -20px);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, 0);
+            }
         }
         
         /* 高級カードデザイン */
@@ -1302,15 +1324,13 @@
         }
         .header__logo:hover { opacity: .92; }
         .header__logo-icon {
-            width: clamp(30px, 4vw, 36px);
-            height: clamp(30px, 4vw, 36px);
+            width: clamp(52px, 7vw, 72px);
+            height: clamp(52px, 7vw, 72px);
             flex-shrink: 0;
-            border-radius: 6px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-right: 12px;
-            overflow: hidden;
         }
         .header__logo-icon img {
             width: 100%;
@@ -1319,7 +1339,7 @@
         }
         .header__logo-text {
             font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(0.75rem, 1.8vw, 1.125rem);
+            font-size: clamp(1.05rem, 2.7vw, 1.5rem);
             font-weight: 600;
             letter-spacing: clamp(0.1em, 1.5vw, 0.2em);
             text-transform: uppercase;
@@ -1350,8 +1370,8 @@
         @media (min-width: 768px) and (max-width: 950px) {
             .header__right { gap: 16px; }
             .header__nav-list { gap: 0.75rem; }
-            .header__nav-list a { font-size: 0.75rem; letter-spacing: 0.05em; }
-            .header__logo-text { font-size: 0.8rem; letter-spacing: 0.12em; }
+            .header__nav-list a { font-size: 0.875rem; letter-spacing: 0.05em; }
+            .header__logo-text { font-size: 1.05rem; letter-spacing: 0.12em; }
             .header__cta { padding: 8px 16px; font-size: 0.65rem; }
         }
         .header__nav-list {
@@ -1365,7 +1385,7 @@
         }
         .header__nav-list a {
             font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(0.75rem, 1.2vw, 0.9375rem);
+            font-size: clamp(0.875rem, 1.4vw, 1.0625rem);
             font-weight: 600;
             color: rgba(232, 236, 241, .9);
             letter-spacing: clamp(0.05em, 1vw, 0.12em);
@@ -1615,19 +1635,20 @@
             font-family: 'Cormorant Garamond', serif;
             font-size: clamp(4rem, 12vw, 6rem);
             font-weight: 700;
-            color: rgba(232, 236, 241, 0.22);
-            -webkit-text-stroke: 1px rgba(201, 169, 97, 0.25);
+            color: rgba(232, 236, 241, 0.42);
+            -webkit-text-stroke: 1px rgba(201, 169, 97, 0.5);
             left: -0.5rem;
             top: -0.5rem;
             pointer-events: none;
-            z-index: 0;
+            z-index: 2;
             user-select: none;
+            letter-spacing: 0.12em;
         }
         .benefits-timeline__content {
             flex: 1;
             padding-left: 2.5rem;
             order: 2;
-            z-index: 1;
+            z-index: 3;
         }
         .benefits-timeline__content--below { padding-top: 0; }
         .benefits-timeline__content--above { padding-top: 0; }
@@ -1656,6 +1677,7 @@
             align-items: center;
             flex-shrink: 0;
             order: 1;
+            z-index: 3;
         }
         .benefits-timeline__node--top {
             top: 0;
@@ -1773,6 +1795,9 @@
                 top: 50%;
                 transform: translate(-50%, -50%);
                 font-size: clamp(2rem, 5vw, 3.5rem);
+                color: rgba(232, 236, 241, 0.42);
+                -webkit-text-stroke: 1px rgba(201, 169, 97, 0.5);
+                letter-spacing: 0.1em;
             }
             .benefits-timeline .benefits-timeline__icon {
                 width: 1.75rem;
@@ -1792,192 +1817,259 @@
             }
         }
 
-        /* 導入企業の声（白背景・ガラス風カード） */
+        /* 導入企業の声：見出し下リード */
+        .benefits-voices__lead {
+            max-width: 36rem;
+            margin: 0 auto;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: rgba(148, 163, 184, 0.95);
+            letter-spacing: 0.02em;
+        }
+        @media (min-width: 768px) {
+            .benefits-voices__lead {
+                font-size: 1rem;
+            }
+        }
+        /* 導入企業の声グリッド：高さ揃え＋声カード以外はgap固定 */
+        .benefits-voices .grid {
+            align-items: stretch;
+        }
+        .benefits-voices .grid:not(.benefits-voice-cards) {
+            gap: 1rem;
+        }
+        /* カード間隔を広めに */
+        .benefits-voice-cards {
+            gap: 1.75rem;
+        }
+        @media (min-width: 768px) {
+            .benefits-voice-cards {
+                gap: 2.25rem;
+            }
+        }
+        @media (min-width: 1024px) {
+            .benefits-voice-cards {
+                gap: 2.75rem;
+            }
+        }
         .benefits-voice-card {
-            background: #ffffff;
-            border: 1px solid rgba(0, 0, 0, 0.06);
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08),
-                        0 1px 3px rgba(0, 0, 0, 0.04),
-                        inset 0 1px 0 rgba(255, 255, 255, 0.9);
-            border-radius: 14px;
-            padding: 1.1rem 1.35rem;
-            transition: border-color .25s ease, box-shadow .25s ease;
+            position: relative;
+            background: linear-gradient(165deg, #ffffff 0%, #fafbfc 50%, #f8f9fb 100%);
+            border: 1px solid rgba(15, 23, 42, 0.06);
+            box-shadow: 0 8px 32px rgba(15, 23, 42, 0.06),
+                        0 2px 8px rgba(15, 23, 42, 0.04),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.95);
+            border-radius: 18px;
+            overflow: hidden;
+            transition: transform .35s cubic-bezier(0.22, 1, 0.36, 1),
+                        border-color .3s ease,
+                        box-shadow .35s ease;
             display: flex;
             flex-direction: column;
-            gap: 0.75rem;
+            height: 100%;
+        }
+        /* 上端アクセント（ゴールド細線） */
+        .benefits-voice-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg,
+                rgba(201, 169, 97, 0.25) 0%,
+                rgba(201, 169, 97, 0.75) 50%,
+                rgba(201, 169, 97, 0.25) 100%);
+            z-index: 1;
+            pointer-events: none;
         }
         .benefits-voice-card:hover {
-            border-color: rgba(201, 169, 97, 0.4);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1),
-                        0 2px 6px rgba(0, 0, 0, 0.05),
-                        inset 0 1px 0 rgba(255, 255, 255, 0.95);
+            transform: translateY(-6px);
+            border-color: rgba(201, 169, 97, 0.28);
+            box-shadow: 0 20px 48px rgba(15, 23, 42, 0.1),
+                        0 8px 24px rgba(201, 169, 97, 0.08),
+                        0 2px 8px rgba(15, 23, 42, 0.05),
+                        inset 0 1px 0 rgba(255, 255, 255, 1);
         }
-        .benefits-voice-card__header {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.75rem;
-        }
-        /* 企業ロゴを目立たせる */
-        .benefits-voice-card__logo {
+        .benefits-voice-card__image {
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            background: #e8ecf0;
             flex-shrink: 0;
-            width: 80px;
-            height: 44px;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.9);
-            background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
-            backdrop-filter: blur(12px) saturate(1.2);
-            -webkit-backdrop-filter: blur(12px) saturate(1.2);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06),
-                        0 1px 3px rgba(0, 0, 0, 0.04),
-                        inset 0 1px 0 rgba(255, 255, 255, 0.98),
-                        inset 0 -1px 0 rgba(0, 0, 0, 0.04);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
         }
-        .benefits-voice-card__logo-placeholder {
-            font-size: 0.65rem;
-            color: rgba(100, 116, 139, 0.8);
-            text-align: center;
-            line-height: 1.3;
+        /* モヤ（グラデ重ね）は使わず、ホバー時に一度だけ走るシャイン */
+        .benefits-voice-card__image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                105deg,
+                transparent 38%,
+                rgba(255, 255, 255, 0.35) 50%,
+                transparent 62%
+            );
+            transform: translateX(-120%);
+            pointer-events: none;
+            z-index: 2;
+            opacity: 0;
         }
-        .benefits-voice-card__logo-placeholder small {
-            font-size: 0.55rem;
+        .benefits-voice-card:hover .benefits-voice-card__image::before {
+            opacity: 1;
+            animation: benefitsVoiceCardShine 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
         }
-        .benefits-voice-card__logo-icon {
-            display: block;
-            font-size: 1.5rem;
-            color: rgba(100, 116, 139, 0.5);
-            margin-bottom: 0.25rem;
+        @keyframes benefitsVoiceCardShine {
+            0% {
+                transform: translateX(-120%);
+            }
+            100% {
+                transform: translateX(120%);
+            }
         }
-        .benefits-voice-card__logo img {
+        @media (prefers-reduced-motion: reduce) {
+            .benefits-voice-card__image::before {
+                animation: none !important;
+                opacity: 0 !important;
+            }
+            .benefits-voice-card:hover .benefits-voice-card__image img {
+                transform: none !important;
+                filter: none !important;
+            }
+        }
+        .benefits-voice-card__image img {
             width: 100%;
             height: 100%;
-            object-fit: contain;
-            padding: 8px;
+            object-fit: cover;
+            display: block;
+            transition: transform .5s cubic-bezier(0.22, 1, 0.36, 1),
+                        filter .35s ease;
         }
-        .benefits-voice-card__company {
+        .benefits-voice-card:hover .benefits-voice-card__image img {
+            transform: scale(1.04);
+            filter: brightness(1.04) contrast(1.02);
+        }
+        .benefits-voice-card__body {
+            padding: 1.25rem 1.4rem 1.35rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
             flex: 1;
-            min-width: 0;
-            padding-left: 0.65rem;
-            border-left: 2px solid var(--gold-accent);
+            min-height: 0;
+            position: relative;
+            z-index: 0;
         }
+        /* 写真の下：メインテキスト（太め・濃色）— 3行で省略記号 */
+        .benefits-voice-card__text {
+            flex: 0 0 auto;
+            min-width: 0;
+            max-height: calc(1.55em * 3);
+            overflow: hidden;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #0f172a;
+            line-height: 1.55;
+            margin: 0;
+            text-align: left;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+            text-overflow: ellipsis;
+            word-break: break-word;
+        }
+        /* 企業名 */
         .benefits-voice-card__company-name {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.05rem;
             font-weight: 700;
-            color: #1e293b;
-            margin-bottom: 0.2rem;
-        }
-        .benefits-voice-card__company-detail {
-            font-size: 0.72rem;
-            color: #64748b;
-        }
-        .benefits-voice-card__quote {
-            position: relative;
-            padding: 0.6rem 0.85rem;
-            background: rgba(0, 0, 0, 0.03);
-            border: 1px solid rgba(0, 0, 0, 0.04);
-            border-radius: 8px;
-            backdrop-filter: blur(6px);
-        }
-        .benefits-voice-card__quote-mark {
-            position: absolute;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: rgba(201, 169, 97, 0.5);
-            line-height: 1;
-        }
-        .benefits-voice-card__quote-mark--open {
-            top: -0.35rem;
-            left: 0;
-        }
-        .benefits-voice-card__quote-mark--close {
-            bottom: -0.5rem;
-            right: 0.25rem;
-        }
-        .benefits-voice-card__quote-inner {
-            position: relative;
-            z-index: 1;
-        }
-        .benefits-voice-card__quote-main {
-            font-size: 0.88rem;
-            color: #334155;
-            line-height: 1.65;
-            margin: 0 0 0.5rem 0;
-        }
-        .benefits-voice-card__quote-sub {
-            font-size: 0.78rem;
-            color: #64748b;
-            line-height: 1.6;
-            margin: 0;
-        }
-        .benefits-voice-card__footer {
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            gap: 0.6rem;
-            margin-top: auto;
-        }
-        .benefits-voice-card__person {
-            text-align: right;
-        }
-        .benefits-voice-card__person-title {
-            font-size: 0.72rem;
-            color: #64748b;
-            margin-bottom: 0.1rem;
-        }
-        .benefits-voice-card__person-name {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: #1e293b;
-        }
-        .benefits-voice-card__photo {
+            color: #0f172a;
+            letter-spacing: 0.02em;
             flex-shrink: 0;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            border: 1px solid rgba(0, 0, 0, 0.06);
-            background: rgba(255, 255, 255, 0.9);
-            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            padding-bottom: 0.35rem;
+            border-bottom: 1px solid rgba(201, 169, 97, 0.2);
+        }
+        /* 軽い説明（小さめグレー） */
+        .benefits-voice-card__desc {
+            font-size: 0.72rem;
+            color: #64748b;
+            line-height: 1.5;
+            margin: 0;
+            flex-shrink: 0;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
             overflow: hidden;
         }
-        .benefits-voice-card__photo-placeholder {
-            font-size: 1.25rem;
-            color: rgba(100, 116, 139, 0.5);
+        .benefits-voice-card__tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem 0.5rem;
+            flex-shrink: 0;
         }
-        .benefits-voice-card__photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
+        .benefits-voice-card__tag {
+            display: inline-block;
+            padding: 0.3rem 0.65rem;
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            color: #334155;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(201, 169, 97, 0.25);
+            border-radius: 999px;
+            box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+        }
+        .benefits-voice-card:hover .benefits-voice-card__tag {
+            border-color: rgba(201, 169, 97, 0.45);
+            background: rgba(255, 255, 255, 1);
         }
         @media (max-width: 767px) {
-            .benefits-voice-card {
-                padding: 0.9rem 1.1rem;
-            }
-            .benefits-voice-card__logo {
-                width: 68px;
-                height: 40px;
+            .benefits-voice-card__body {
+                padding: 0.95rem 1rem;
             }
             .benefits-voice-card__company-name {
                 font-size: 0.95rem;
             }
-            .benefits-voice-card__quote-mark {
-                font-size: 2rem;
-            }
-            .benefits-voice-card__photo {
-                width: 38px;
-                height: 38px;
+            .benefits-voice-card__text {
+                font-size: 0.88rem;
+                max-height: calc(1.55em * 3);
             }
         }
 
-        /* 導入企業一覧 見出し */
+        /* 導入企業の声ブロック：一覧見出しまで広めに余白（詰まり防止） */
+        .benefits-voices--stack {
+            margin-bottom: 0;
+            padding-bottom: 3rem;
+        }
+        @media (min-width: 768px) {
+            .benefits-voices--stack {
+                padding-bottom: 4rem;
+            }
+        }
+        @media (min-width: 1024px) {
+            .benefits-voices--stack {
+                padding-bottom: 5rem;
+            }
+        }
+        /* 導入企業一覧 見出し（声カードとの間を空けて詰まりを解消） */
+        .benefits-logos-heading-wrap {
+            margin-top: 2rem;
+            padding-top: 2.5rem;
+        }
+        @media (min-width: 768px) {
+            .benefits-logos-heading-wrap {
+                margin-top: 2.5rem;
+                padding-top: 3.5rem;
+            }
+        }
+        @media (min-width: 1024px) {
+            .benefits-logos-heading-wrap {
+                margin-top: 3rem;
+                padding-top: 4rem;
+            }
+        }
         .benefits-logos-heading {
             font-family: 'Cormorant Garamond', serif;
             font-size: clamp(1.5rem, 4vw, 2rem);
@@ -2062,9 +2154,6 @@
         }
         .benefits-voices {
             position: relative;
-        }
-        .benefits-voices .grid {
-            gap: 1rem;
         }
         @keyframes benefits-logos-scroll-left {
             0% { transform: translateX(0); }
@@ -2698,7 +2787,9 @@
         }
 
         /* フッター（ページデザインに合わせたブラッシュアップ） */
+        /* WordPress 用にフッターを一時非表示。静的フッターを戻す場合は次の1行を削除 */
         .footer {
+            display: none !important;
             background: var(--navy-dark);
             padding: 4rem 0 3rem;
             border-top: 1px solid rgba(232, 236, 241, 0.12);
@@ -2898,7 +2989,6 @@
         html.print-mode .toast,
         html.print-mode .modal,
         html.print-mode .overlay,
-        html.print-mode .cursor-compass,
         html.print-mode .cta-float {
             display: none !important;
         }

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EXECUTIVE COMPASS | エグゼクティブ人材育成プログラム</title>
     <meta name="description" content="企業の持続的成長を担うエグゼクティブ人材の育成を支援。経営シミュレーション体験を通じて、未来の経営人材を創るための人材育成プログラム。">
-    <link rel="icon" href="images/logo_transparent.png" type="image/png">
+    <link rel="icon" href="images/header-logo.png" type="image/png">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -31,7 +31,7 @@
     <header class="header" id="siteHeader">
         <div class="header-inner">
             <a href="#top" class="header__logo" aria-label="EXECUTIVE COMPASS トップ">
-                <span class="header__logo-icon"><img src="images/CTA.png" alt="" width="36" height="36"></span>
+                <span class="header__logo-icon"><img src="images/header-logo.png" alt="" width="64" height="64"></span>
                 <span class="header__logo-text"><span class="header__logo-executive">EXECUTIVE</span><span class="header__logo-compass"> COMPASS</span></span>
             </a>
             <div class="header__right">
@@ -156,7 +156,7 @@
 
     <!-- EXECUTIVE COMPASS とは（上部固定＋3枚画像がスクロールで横スライド） -->
     <section id="about" class="reason-section">
-        <div class="reason-pin-wrap" data-slides="4">
+        <div class="reason-pin-wrap" data-slides="3">
             <div class="reason-pinned">
                 <div class="reason-pinned__header">
                     <h2 class="reason-pinned__title"><span class="reason-pinned__title-silver">EXECUTIVE</span><span class="reason-pinned__title-gold metallic-gold"> COMPASS</span> とは</h2>
@@ -543,71 +543,58 @@
             
             <!-- 導入企業の声＋カード下に流れるロゴ -->
             <div class="benefits-voices-with-logos">
-            <div class="benefits-voices max-w-6xl mx-auto mb-16">
+            <div class="benefits-voices benefits-voices--stack max-w-6xl mx-auto">
                 <div class="text-center mb-12 fade-in">
                     <h3 class="text-3xl md:text-4xl font-serif font-bold text-silver-light mb-4"><span class="metallic-gold">導入企業</span>の声</h3>
+                    <p class="benefits-voices__lead">お客様の声やコンサルティングの効果をご覧いただけます。</p>
                 </div>
-                <div class="grid md:grid-cols-2 gap-6 fade-in">
+                <div class="benefits-voice-cards grid md:grid-cols-3 fade-in">
                     <div class="benefits-voice-card">
-                        <div class="benefits-voice-card__header">
-                            <div class="benefits-voice-card__logo">
-                                <img src="images/C_banner/clients_banner_1.png" alt="導入企業ロゴ" width="90" height="70" loading="lazy">
-                            </div>
-                            <div class="benefits-voice-card__company">
-                                <div class="benefits-voice-card__company-name">〇〇株式会社 様</div>
-                                <div class="benefits-voice-card__company-detail">業種: 製造業 / 従業員数: 約500名</div>
-                            </div>
+                        <div class="benefits-voice-card__image">
+                            <img src="images/voice-card-1.png" alt="株式会社ビジネスソリューションズ" loading="lazy">
                         </div>
-                        <div class="benefits-voice-card__quote">
-                            <span class="benefits-voice-card__quote-mark benefits-voice-card__quote-mark--open">"</span>
-                            <div class="benefits-voice-card__quote-inner">
-                                <p class="benefits-voice-card__quote-main">EXECUTIVE COMPASSの導入により、若手リーダー層の経営視点が劇的に変化しました。数字への意識が高まり、現場での意思決定スピードが加速しています。</p>
-                                <p class="benefits-voice-card__quote-sub">座学では決して得られない実践的な経営感覚を、次世代リーダー候補に効果的に習得させることができました。特に財務数字への理解度が飛躍的に向上し、経営会議での発言の質が明らかに変わりました。</p>
-                            </div>
-                            <span class="benefits-voice-card__quote-mark benefits-voice-card__quote-mark--close">"</span>
-                        </div>
-                        <div class="benefits-voice-card__footer">
-                            <div class="benefits-voice-card__person">
-                                <div class="benefits-voice-card__person-title">人事部長</div>
-                                <div class="benefits-voice-card__person-name">〇〇 〇〇 様</div>
-                            </div>
-                            <div class="benefits-voice-card__photo">
-                                <img src="images/Screenshot%202026-03-02%20at%2020.56.16.png" alt="お客様" width="44" height="44" loading="lazy" class="benefits-voice-card__photo-img">
+                        <div class="benefits-voice-card__body">
+                            <p class="benefits-voice-card__text">EXECUTIVE COMPASSの導入により、若手リーダー層の経営視点が劇的に変化しました。数字への意識が高まり、現場での意思決定スピードが加速しています。座学では得られない実践的な経営感覚を、次世代リーダー候補に効果的に習得させることができました。</p>
+                            <div class="benefits-voice-card__company-name">株式会社ビジネスソリューションズ 様</div>
+                            <p class="benefits-voice-card__desc">業種: コンサルティング・人材育成支援</p>
+                            <div class="benefits-voice-card__tags">
+                                <span class="benefits-voice-card__tag">経営視点育成</span>
+                                <span class="benefits-voice-card__tag">リーダー育成</span>
                             </div>
                         </div>
                     </div>
                     <div class="benefits-voice-card">
-                        <div class="benefits-voice-card__header">
-                            <div class="benefits-voice-card__logo">
-                                <img src="images/C_banner/clients_banner_13.png" alt="導入企業ロゴ" width="90" height="70" loading="lazy">
-                            </div>
-                            <div class="benefits-voice-card__company">
-                                <div class="benefits-voice-card__company-name">△△株式会社 様</div>
-                                <div class="benefits-voice-card__company-detail">業種: ITサービス / 従業員数: 約300名</div>
+                        <div class="benefits-voice-card__image">
+                            <img src="images/voice-card-2.png" alt="株式会社データリーフ" loading="lazy">
+                        </div>
+                        <div class="benefits-voice-card__body">
+                            <p class="benefits-voice-card__text">DX推進リーダーに経営視点を持たせることが課題でしたが、このプログラムで技術と経営の両面を理解する人材育成に成功しました。投資対効果を意識した提案ができるようになり、事業成果に直結しています。</p>
+                            <div class="benefits-voice-card__company-name">株式会社データリーフ 様</div>
+                            <p class="benefits-voice-card__desc">業種: 情報サービス・イベント運営</p>
+                            <div class="benefits-voice-card__tags">
+                                <span class="benefits-voice-card__tag">経営視点育成</span>
+                                <span class="benefits-voice-card__tag">DX人材育成</span>
                             </div>
                         </div>
-                        <div class="benefits-voice-card__quote">
-                            <span class="benefits-voice-card__quote-mark benefits-voice-card__quote-mark--open">"</span>
-                            <div class="benefits-voice-card__quote-inner">
-                                <p class="benefits-voice-card__quote-main">DX推進リーダーに経営視点を持たせることが課題でしたが、このプログラムで技術と経営の両面を理解する人材育成に成功しました。</p>
-                                <p class="benefits-voice-card__quote-sub">投資対効果を意識した提案ができるようになり、事業成果に直結しています。経営会議での議論の質が変わり、意思決定が早くなりました。</p>
-                            </div>
-                            <span class="benefits-voice-card__quote-mark benefits-voice-card__quote-mark--close">"</span>
+                    </div>
+                    <div class="benefits-voice-card">
+                        <div class="benefits-voice-card__image">
+                            <img src="images/voice-card-3.png" alt="川崎機械工業株式会社" loading="lazy">
                         </div>
-                        <div class="benefits-voice-card__footer">
-                            <div class="benefits-voice-card__person">
-                                <div class="benefits-voice-card__person-title">経営企画室長</div>
-                                <div class="benefits-voice-card__person-name">〇〇 〇〇 様</div>
-                            </div>
-                            <div class="benefits-voice-card__photo">
-                                <img src="images/Screenshot%202026-03-02%20at%2020.56.28.png" alt="お客様" width="44" height="44" loading="lazy" class="benefits-voice-card__photo-img">
+                        <div class="benefits-voice-card__body">
+                            <p class="benefits-voice-card__text">EXECUTIVE COMPASSの導入により、若手リーダー層の経営視点が劇的に変化しました。数字への意識が高まり、現場での意思決定スピードが加速しています。座学では得られない実践的な経営感覚を、次世代リーダー候補に効果的に習得させることができました。</p>
+                            <div class="benefits-voice-card__company-name">川崎機械工業株式会社 様</div>
+                            <p class="benefits-voice-card__desc">業種: 製造業・メンテナンス</p>
+                            <div class="benefits-voice-card__tags">
+                                <span class="benefits-voice-card__tag">経営視点育成</span>
+                                <span class="benefits-voice-card__tag">リーダー育成</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- 導入企業一覧 見出し -->
-            <div class="text-center mb-6 fade-in">
+            <!-- 導入企業一覧 見出し（上に余白） -->
+            <div class="benefits-logos-heading-wrap text-center mb-6 fade-in">
                 <h3 class="benefits-logos-heading"><span class="metallic-gold">導入企業</span>一覧</h3>
             </div>
             <!-- 企業ロゴ流れ（カード下・3行） -->
@@ -800,10 +787,8 @@
         </div>
     </section>
 
-    <!-- カーソルに追随するコンパス -->
-    <div class="cursor-compass" id="cursorCompass" aria-hidden="true">
-        <img src="images/CTA.png" alt="">
-    </div>
+    <!-- 羅針盤の針カスタムカーソル（ゴールド・点滅・マウス追随） -->
+    <div class="cursor-needle" id="cursorNeedle" aria-hidden="true"></div>
 
     <!-- 右下ふわっと表示の無料体験受付中ボタン -->
     <div class="cta-float" id="ctaFloat" role="complementary" aria-label="無料体験実施中">
@@ -818,7 +803,7 @@
             <div class="footer__main">
                 <div class="footer__brand">
                     <div class="footer__logo-wrap">
-                        <img src="images/CTA.png" alt="" class="footer__logo-img" width="44" height="44">
+                        <img src="images/header-logo.png" alt="" class="footer__logo-img" width="44" height="44">
                         <h3 class="footer__title">
                             <span class="footer__logo-executive">EXECUTIVE</span>
                             <span class="footer__logo-compass"> COMPASS</span>

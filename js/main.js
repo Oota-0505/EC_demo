@@ -12,8 +12,8 @@ document.addEventListener('DOMContentLoaded', function() {
     initFormValidation();
     initMobileMenu();
     initParallax();
+    initCursorNeedle();
     initCtaFloat();
-    initCursorCompass();
     initVideoControls();
 });
 
@@ -311,55 +311,25 @@ function showSuccessMessage() {
     }, 5000);
 }
 
-// カーソルに追随するコンパス（ヒーロー＋対象者セクション以降のみ表示）
-function initCursorCompass() {
-    var el = document.getElementById('cursorCompass');
+// 羅針盤の針カスタムカーソル（ゴールド点滅・スムーズ追随）
+function initCursorNeedle() {
+    var el = document.getElementById('cursorNeedle');
     if (!el || window.matchMedia('(pointer: coarse)').matches) return;
-    var hero = document.querySelector('.kv');
-    var targetSection = document.getElementById('target');
-    var x = 0, y = 0;
-    var rx = 0, ry = 0;
-    var raf = 0;
-    var offset = 0;
-
-    function isInCompassZone(clientY) {
-        if (hero) {
-            var heroRect = hero.getBoundingClientRect();
-            if (clientY >= heroRect.top && clientY <= heroRect.bottom) return true;
-        }
-        if (targetSection) {
-            var targetRect = targetSection.getBoundingClientRect();
-            if (clientY >= targetRect.top) return true;
-        }
-        return false;
-    }
-
+    document.body.classList.add('cursor-needle-active');
+    var x = 0, y = 0, rx = 0, ry = 0;
     function move(e) {
         x = e.clientX;
         y = e.clientY;
-        if (!raf) raf = requestAnimationFrame(update);
+        el.classList.add('is-visible');
     }
-
     function update() {
-        var showCompass = isInCompassZone(y);
-        var tx = x + offset;
-        var ty = y + offset;
-        rx += (tx - rx) * 0.18;
-        ry += (ty - ry) * 0.18;
-        el.style.left = rx + 'px';
-        el.style.top = ry + 'px';
-        if (showCompass) {
-            el.classList.add('is-visible');
-        } else {
-            el.classList.remove('is-visible');
-        }
-        raf = 0;
-        if (Math.abs(tx - rx) > 0.5 || Math.abs(ty - ry) > 0.5 || showCompass) {
-            raf = requestAnimationFrame(update);
-        }
+        rx += (x - rx) * 0.38;
+        ry += (y - ry) * 0.38;
+        el.style.transform = 'translate(' + rx + 'px,' + ry + 'px)';
+        requestAnimationFrame(update);
     }
-
     document.addEventListener('mousemove', move, { passive: true });
+    requestAnimationFrame(update);
 }
 
 // 右下「無料体験受付中」ボタン（ふわっと表示）
@@ -573,9 +543,14 @@ function animateCounter(element, target, originalText) {
     }, stepTime);
 }
 
-// フォーム入力時のリアルタイムバリデーション
-document.querySelectorAll('input[required], textarea[required], select').forEach(field => {
+// フォーム入力時のフォーカス／ブラー（1回の blur で border + boxShadow をまとめて処理）
+document.querySelectorAll('input[required], textarea[required], select').forEach(function(field) {
+    field.addEventListener('focus', function() {
+        this.style.borderColor = 'rgba(201, 169, 97, 0.5)';
+        this.style.boxShadow = '0 0 0 3px rgba(201, 169, 97, 0.1)';
+    });
     field.addEventListener('blur', function() {
+        this.style.boxShadow = 'none';
         if (this.value.trim()) {
             clearFieldError(this);
             if (this.tagName !== 'SELECT') {
@@ -584,15 +559,6 @@ document.querySelectorAll('input[required], textarea[required], select').forEach
         } else {
             this.style.borderColor = 'rgba(139, 149, 165, 0.3)';
         }
-    });
-    
-    field.addEventListener('focus', function() {
-        this.style.borderColor = 'rgba(201, 169, 97, 0.5)';
-        this.style.boxShadow = '0 0 0 3px rgba(201, 169, 97, 0.1)';
-    });
-    
-    field.addEventListener('blur', function() {
-        this.style.boxShadow = 'none';
     });
 });
 
@@ -621,34 +587,3 @@ window.addEventListener('load', function() {
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
 });
-
-// CSS アニメーション追加
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes fadeInDown {
-        from {
-            opacity: 0;
-            transform: translate(-50%, -20px);
-        }
-        to {
-            opacity: 1;
-            transform: translate(-50%, 0);
-        }
-    }
-    
-    @keyframes shimmer {
-        0% {
-            background-position: -1000px 0;
-        }
-        100% {
-            background-position: 1000px 0;
-        }
-    }
-    
-    .metallic-silver,
-    .metallic-gold {
-        animation: shimmer 3s infinite linear;
-        background-size: 200% auto;
-    }
-`;
-document.head.appendChild(style);
