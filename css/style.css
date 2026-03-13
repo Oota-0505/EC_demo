@@ -1698,7 +1698,7 @@
         }
         .flow-card__arrow {
             position: absolute;
-            right: -2.25rem;
+            right: -3rem;
             top: 50%;
             transform: translateY(-50%);
             width: 3.5rem;
@@ -1706,7 +1706,7 @@
             display: none;
             align-items: center;
             justify-content: center;
-            color: rgba(201, 169, 97, 0.55);
+            color: rgba(201, 169, 97, 0.85);
             font-size: 2rem;
             transition: color .25s ease;
         }
@@ -1714,7 +1714,7 @@
             font-size: inherit;
         }
         .flow-card:hover .flow-card__arrow {
-            color: rgba(201, 169, 97, 0.75);
+            color: #c9a961;
         }
         @media (min-width: 768px) {
             .flow-card__arrow {
