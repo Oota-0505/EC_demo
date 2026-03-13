@@ -1586,6 +1586,204 @@
             }
         }
 
+        /* プログラム内容（#flow）— 白カード＋ゴールドアクセントでサイト統一 */
+        .flow-body {
+            padding: 0;
+        }
+        .flow-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+        @media (min-width: 768px) {
+            .flow-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
+                margin-bottom: 3rem;
+            }
+        }
+        .flow-card {
+            position: relative;
+            background: linear-gradient(165deg, #ffffff 0%, #fafbfc 50%, #f8f9fb 100%);
+            border: 1px solid rgba(15, 23, 42, 0.06);
+            border-radius: 18px;
+            box-shadow: 0 8px 32px rgba(15, 23, 42, 0.06),
+                        0 2px 8px rgba(15, 23, 42, 0.04),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.95);
+            padding: 1.75rem 1.5rem 1.75rem;
+            transition: transform .35s cubic-bezier(0.22, 1, 0.36, 1),
+                        border-color .3s ease,
+                        box-shadow .35s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .flow-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg,
+                rgba(201, 169, 97, 0.25) 0%,
+                rgba(201, 169, 97, 0.75) 50%,
+                rgba(201, 169, 97, 0.25) 100%);
+            border-radius: 18px 18px 0 0;
+            z-index: 1;
+            pointer-events: none;
+        }
+        .flow-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(201, 169, 97, 0.28);
+            box-shadow: 0 20px 48px rgba(15, 23, 42, 0.1),
+                        0 8px 24px rgba(201, 169, 97, 0.08),
+                        0 2px 8px rgba(15, 23, 42, 0.05),
+                        inset 0 1px 0 rgba(255, 255, 255, 1);
+        }
+        .flow-card__number {
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #c9a961 0%, #dcc486 50%, #c9a961 100%);
+            color: #0a1628;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 16px rgba(201, 169, 97, 0.35),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.35);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+        .flow-card__title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin: 0 0 1.25rem 0;
+            letter-spacing: 0.02em;
+        }
+        .flow-card__list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            text-align: left;
+            width: 100%;
+        }
+        .flow-card__list li {
+            position: relative;
+            padding-left: 1.75rem;
+            margin-bottom: 0.65rem;
+            font-size: 0.9rem;
+            color: #475569;
+            line-height: 1.5;
+        }
+        .flow-card__list li:last-child {
+            margin-bottom: 0;
+        }
+        .flow-card__list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.35rem;
+            width: 1rem;
+            height: 1rem;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' fill='%23c9a961'%3E%3Cpath d='M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm-42.7 318.9L106.7 254.5l23.8-23.2 82.8 84.8 162.2-162.2 23.8 23.2-186 181z'/%3E%3C/svg%3E") center/contain no-repeat;
+        }
+        .flow-card__arrow {
+            position: absolute;
+            right: -2.25rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 3.5rem;
+            height: 3.5rem;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            color: rgba(201, 169, 97, 0.55);
+            font-size: 2rem;
+            transition: color .25s ease;
+        }
+        .flow-card__arrow i {
+            font-size: inherit;
+        }
+        .flow-card:hover .flow-card__arrow {
+            color: rgba(201, 169, 97, 0.75);
+        }
+        @media (min-width: 768px) {
+            .flow-card__arrow {
+                display: flex;
+            }
+            .flow-card--3 .flow-card__arrow {
+                display: none;
+            }
+        }
+        .flow-cta-box {
+            background: linear-gradient(165deg, #ffffff 0%, #fafbfc 100%);
+            border: 1px solid rgba(201, 169, 97, 0.25);
+            border-radius: 18px;
+            box-shadow: 0 8px 32px rgba(15, 23, 42, 0.06),
+                        0 2px 8px rgba(15, 23, 42, 0.04),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.95);
+            padding: 2rem 2.5rem;
+            text-align: center;
+            position: relative;
+            transition: border-color .3s ease, box-shadow .35s ease;
+        }
+        .flow-cta-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg,
+                rgba(201, 169, 97, 0.3) 0%,
+                rgba(201, 169, 97, 0.8) 50%,
+                rgba(201, 169, 97, 0.3) 100%);
+            border-radius: 18px 18px 0 0;
+            pointer-events: none;
+        }
+        .flow-cta-box:hover {
+            border-color: rgba(201, 169, 97, 0.4);
+            box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08),
+                        0 4px 16px rgba(201, 169, 97, 0.1);
+        }
+        .flow-cta-box__icon {
+            font-size: 2.5rem;
+            color: #c9a961;
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+        .flow-cta-box__title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin: 0 0 1rem 0;
+            letter-spacing: 0.02em;
+        }
+        .flow-cta-box__text {
+            font-size: 0.95rem;
+            color: #475569;
+            line-height: 1.75;
+            margin: 0;
+        }
+        @media (min-width: 768px) {
+            .flow-cta-box__title {
+                font-size: 1.75rem;
+            }
+            .flow-cta-box__text {
+                font-size: 1rem;
+            }
+        }
+
         /* 導入効果 タイムライン型 */
         .benefits-timeline {
             position: relative;
