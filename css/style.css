@@ -2164,24 +2164,45 @@
             100% { transform: translateX(0); }
         }
 
-        /* 対象者セクション（円形コンパス風） */
+        /* 対象者セクション（円形コンパス風）— PCで一画面に収めるよう縮小・見出しサイズは維持 */
         .target-section {
-            padding: 6rem 0 8rem;
+            padding: 2.5rem 0 3.5rem;
+        }
+        @media (min-width: 768px) {
+            .target-section {
+                padding: 3rem 0 4rem;
+            }
+        }
+        @media (min-width: 1024px) {
+            .target-section {
+                padding: 3.5rem 0 4.5rem;
+            }
         }
         .target-header {
-            margin-bottom: 2.5rem;
+            margin-bottom: 0.75rem;
+        }
+        @media (min-width: 768px) {
+            .target-header {
+                margin-bottom: 1rem;
+            }
+        }
+        .target-header .section-heading {
+            margin-bottom: 0.5rem;
+        }
+        .target-header .decorative-line {
+            margin-bottom: 0.5rem;
         }
         .target-header p {
-            margin-top: 1.5rem;
-            font-size: clamp(0.875rem, 2.5vw, 1.25rem);
+            margin-top: 0.75rem;
+            font-size: clamp(0.8125rem, 2.2vw, 1.1rem);
         }
         .target-compass {
-            --compass-ring: 420px;
-            --compass-radius: 210px;
+            --compass-ring: 320px;
+            --compass-radius: 160px;
             position: relative;
             width: 100%;
-            max-width: 840px;
-            min-height: 560px;
+            max-width: 640px;
+            min-height: 400px;
             margin: 0 auto;
             aspect-ratio: 1;
             overflow: visible;
@@ -2189,66 +2210,66 @@
         }
         @media (min-width: 1200px) {
             .target-compass {
-                --compass-ring: 520px;
-                --compass-radius: 260px;
-                max-width: 1040px;
-                min-height: 1040px;
+                --compass-ring: 400px;
+                --compass-radius: 200px;
+                max-width: 800px;
+                min-height: 800px;
             }
         }
         @media (min-width: 1100px) and (max-width: 1199px) {
             .target-compass {
-                --compass-ring: 480px;
-                --compass-radius: 240px;
-                max-width: 960px;
-                min-height: 960px;
+                --compass-ring: 360px;
+                --compass-radius: 180px;
+                max-width: 720px;
+                min-height: 720px;
             }
         }
         @media (min-width: 1100px) {
             .target-compass__item {
-                width: 64px;
-                height: 64px;
-                margin-left: -32px;
-                margin-top: -32px;
+                width: 52px;
+                height: 52px;
+                margin-left: -26px;
+                margin-top: -26px;
             }
             .target-compass__icon {
-                width: 64px;
-                height: 64px;
-                font-size: 1.35rem;
+                width: 52px;
+                height: 52px;
+                font-size: 1.15rem;
             }
             .target-compass__content {
-                width: 220px;
-                margin-left: -110px;
-                padding: 0.875rem 1rem 0.875rem 1.125rem;
+                width: 172px;
+                margin-left: -86px;
+                padding: 0.6rem 0.75rem 0.6rem 0.875rem;
             }
-            .target-compass__item--0 .target-compass__content { top: auto; margin-bottom: 0; bottom: calc(100% + 36px); }
+            .target-compass__item--0 .target-compass__content { top: auto; margin-bottom: 0; bottom: calc(100% + 28px); }
             .target-compass__item--1 .target-compass__content,
-            .target-compass__item--2 .target-compass__content { left: calc(100% + 36px); top: 50%; margin-left: 0; margin-top: -2.75rem; }
-            .target-compass__item--3 .target-compass__content { top: calc(100% + 36px); margin-top: 0; }
+            .target-compass__item--2 .target-compass__content { left: calc(100% + 28px); top: 50%; margin-left: 0; margin-top: -2.25rem; }
+            .target-compass__item--3 .target-compass__content { top: calc(100% + 28px); margin-top: 0; }
             .target-compass__item--4 .target-compass__content,
-            .target-compass__item--5 .target-compass__content { left: 0; top: 50%; margin-left: -256px; margin-top: -2.75rem; }
+            .target-compass__item--5 .target-compass__content { left: 0; top: 50%; margin-left: -200px; margin-top: -2.25rem; }
         }
         @media (min-width: 1200px) {
             .target-compass__item {
-                width: 68px;
-                height: 68px;
-                margin-left: -34px;
-                margin-top: -34px;
+                width: 56px;
+                height: 56px;
+                margin-left: -28px;
+                margin-top: -28px;
             }
             .target-compass__icon {
-                width: 68px;
-                height: 68px;
-                font-size: 1.4rem;
+                width: 56px;
+                height: 56px;
+                font-size: 1.2rem;
             }
             .target-compass__content {
-                width: 240px;
-                margin-left: -120px;
-                padding: 0.875rem 1.125rem 0.875rem 1.25rem;
+                width: 188px;
+                margin-left: -94px;
+                padding: 0.65rem 0.875rem 0.65rem 1rem;
             }
             .target-compass__item--1 .target-compass__content,
-            .target-compass__item--2 .target-compass__content { left: calc(100% + 40px); top: 50%; margin-left: 0; margin-top: -2.75rem; }
-            .target-compass__item--3 .target-compass__content { top: calc(100% + 40px); margin-top: 0; }
+            .target-compass__item--2 .target-compass__content { left: calc(100% + 30px); top: 50%; margin-left: 0; margin-top: -2.25rem; }
+            .target-compass__item--3 .target-compass__content { top: calc(100% + 30px); margin-top: 0; }
             .target-compass__item--4 .target-compass__content,
-            .target-compass__item--5 .target-compass__content { left: 0; top: 50%; margin-left: -280px; margin-top: -2.75rem; }
+            .target-compass__item--5 .target-compass__content { left: 0; top: 50%; margin-left: -218px; margin-top: -2.25rem; }
         }
         .target-compass__rotator {
             position: absolute;
@@ -2321,11 +2342,11 @@
             box-shadow: 0 0 16px rgba(201, 169, 97, 0.4),
                         inset 0 1px 0 rgba(255, 255, 255, 0.3);
         }
-        /* 方位ラベル（N/E/S/W）：1個目の円の上、統一サイズ */
+        /* 方位ラベル（N/E/S/W）：コンパス縮小に合わせて少し縮小 */
         .target-compass__cardinal {
             position: absolute;
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.3rem;
+            font-size: 1.05rem;
             font-weight: 700;
             letter-spacing: 0.12em;
             text-transform: uppercase;
@@ -2494,16 +2515,16 @@
         }
         @media (max-width: 1099px) {
             .target-compass__content {
-                width: 180px;
-                margin-left: -90px;
-                padding: 0.75rem 1rem 0.75rem 1.125rem;
+                width: 168px;
+                margin-left: -84px;
+                padding: 0.6rem 0.875rem 0.6rem 1rem;
             }
-            .target-compass__item--0 .target-compass__content { top: auto; bottom: calc(100% + 20px); margin-top: 0; margin-bottom: 0; }
+            .target-compass__item--0 .target-compass__content { top: auto; bottom: calc(100% + 18px); margin-top: 0; margin-bottom: 0; }
             .target-compass__item--1 .target-compass__content,
-            .target-compass__item--2 .target-compass__content { left: calc(100% + 20px); top: 50%; margin-left: 0; margin-top: -2.25rem; }
-            .target-compass__item--3 .target-compass__content { top: calc(100% + 20px); bottom: auto; margin-top: 0; margin-bottom: 0; }
+            .target-compass__item--2 .target-compass__content { left: calc(100% + 18px); top: 50%; margin-left: 0; margin-top: -2rem; }
+            .target-compass__item--3 .target-compass__content { top: calc(100% + 18px); bottom: auto; margin-top: 0; margin-bottom: 0; }
             .target-compass__item--4 .target-compass__content,
-            .target-compass__item--5 .target-compass__content { left: 0; top: 50%; margin-left: -200px; margin-top: -2.25rem; }
+            .target-compass__item--5 .target-compass__content { left: 0; top: 50%; margin-left: -184px; margin-top: -2rem; }
         }
         .target-compass__content::before {
             content: '';
@@ -2524,14 +2545,14 @@
             font-size: 1rem;
             font-weight: 700;
             color: var(--gold-accent);
-            margin: 0 0 0.4rem 0;
+            margin: 0 0 0.35rem 0;
             letter-spacing: 0.03em;
             text-align: center;
         }
         .target-compass__desc {
-            font-size: 0.8125rem;
+            font-size: 0.75rem;
             color: rgba(232, 236, 241, 0.88);
-            line-height: 1.55;
+            line-height: 1.5;
             margin: 0;
             letter-spacing: 0.02em;
         }
