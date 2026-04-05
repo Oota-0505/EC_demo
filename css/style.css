@@ -3456,11 +3456,36 @@
             overflow: hidden;
             box-shadow: 0 8px 32px rgba(0, 0, 0, .4);
             transition: transform .2s ease, box-shadow .2s ease;
-            max-width: min(260px, calc(100vw - 2 * var(--cta-float-inset) - 12px));
+            /* 上限を抑えつつ、狭い幅では vw 比でも大きくなりすぎないよう二重に制限 */
+            max-width: min(220px, calc(100vw - 2 * var(--cta-float-inset) - 16px), 58vw);
         }
-        /* 横長バナー版は上限を少し広げ、同じく画面幅内に収める */
+        /* 横長バナー版のみやや広く（従来どおり v2 用） */
         .cta-float__link--banner-v2 {
-            max-width: min(300px, calc(100vw - 2 * var(--cta-float-inset) - 12px));
+            max-width: min(260px, calc(100vw - 2 * var(--cta-float-inset) - 16px), 62vw);
+        }
+        @media (max-width: 1024px) {
+            .cta-float__link {
+                max-width: min(200px, calc(100vw - 2 * var(--cta-float-inset) - 16px), 56vw);
+            }
+            .cta-float__link--banner-v2 {
+                max-width: min(230px, calc(100vw - 2 * var(--cta-float-inset) - 16px), 60vw);
+            }
+        }
+        @media (max-width: 768px) {
+            .cta-float__link {
+                max-width: min(168px, calc(100vw - 2 * var(--cta-float-inset) - 16px), 52vw);
+            }
+            .cta-float__link--banner-v2 {
+                max-width: min(190px, calc(100vw - 2 * var(--cta-float-inset) - 16px), 56vw);
+            }
+        }
+        @media (max-width: 480px) {
+            .cta-float__link {
+                max-width: min(140px, calc(100vw - 2 * var(--cta-float-inset) - 16px), 48vw);
+            }
+            .cta-float__link--banner-v2 {
+                max-width: min(150px, calc(100vw - 2 * var(--cta-float-inset) - 16px), 52vw);
+            }
         }
         .cta-float__link:hover {
             transform: scale(1.02);
