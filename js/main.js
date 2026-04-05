@@ -6,6 +6,7 @@ function clamp(n, min, max) { return Math.max(min, Math.min(max, n)); }
 document.addEventListener('DOMContentLoaded', function() {
     initKvSwiper();
     initReasonPin();
+    initProblemPin();
     initSmoothScroll();
     initScrollAnimations();
     initFormValidation();
@@ -14,7 +15,107 @@ document.addEventListener('DOMContentLoaded', function() {
     initCursorNeedle();
     initCtaFloat();
     initVideoControls();
+    initParticipantVoiceModal();
+    initHeroStatCounters();
+    initContactFieldFocusStyles();
 });
+
+// 受講生の声：カードクリックでメッセージモーダル
+function initParticipantVoiceModal() {
+    var modal = document.getElementById('participantVoiceModal');
+    var dialog = document.getElementById('participantVoiceModalDialog');
+    var backdrop = modal && modal.querySelector('.participant-voice-modal__backdrop');
+    var closeBtn = modal && modal.querySelector('.participant-voice-modal__close');
+    var bodyEl = document.getElementById('participantVoiceModalBody');
+    var elIndustry = document.getElementById('participantVoiceModalIndustry');
+    var elRole = document.getElementById('participantVoiceModalRole');
+    var elTitle = document.getElementById('participantVoiceModalTitle');
+    var cards = document.querySelectorAll('.participant-voice-card[data-voice-template]');
+    if (!modal || !dialog || !bodyEl || !cards.length) return;
+
+    var lastFocus = null;
+    var trapHandler = null;
+
+    function getFocusable() {
+        var list = modal.querySelectorAll(
+            'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        );
+        return Array.prototype.slice.call(list).filter(function (n) {
+            return n.offsetParent !== null || n === closeBtn;
+        });
+    }
+
+    function openModal(card) {
+        var tid = card.getAttribute('data-voice-template');
+        var tpl = tid ? document.getElementById(tid) : null;
+        if (!tpl || !tpl.content) return;
+
+        var industry = card.querySelector('.participant-voice-card__industry');
+        var role = card.querySelector('.participant-voice-card__role');
+        var headline = card.querySelector('.participant-voice-card__headline');
+        if (elIndustry) elIndustry.textContent = industry ? industry.textContent.trim() : '';
+        if (elRole) elRole.textContent = role ? role.textContent.trim() : '';
+        if (elTitle) elTitle.textContent = headline ? headline.textContent.trim() : '';
+
+        bodyEl.innerHTML = '';
+        bodyEl.appendChild(document.importNode(tpl.content, true));
+
+        lastFocus = document.activeElement;
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+
+        closeBtn.focus();
+
+        trapHandler = function (e) {
+            if (e.key !== 'Tab') return;
+            var nodes = getFocusable();
+            if (nodes.length === 0) return;
+            var first = nodes[0];
+            var last = nodes[nodes.length - 1];
+            if (e.shiftKey) {
+                if (document.activeElement === first) {
+                    e.preventDefault();
+                    last.focus();
+                }
+            } else {
+                if (document.activeElement === last) {
+                    e.preventDefault();
+                    first.focus();
+                }
+            }
+        };
+        modal.addEventListener('keydown', trapHandler);
+    }
+
+    function closeModal() {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        bodyEl.innerHTML = '';
+        if (trapHandler) {
+            modal.removeEventListener('keydown', trapHandler);
+            trapHandler = null;
+        }
+        if (lastFocus && typeof lastFocus.focus === 'function') {
+            lastFocus.focus();
+        }
+        lastFocus = null;
+    }
+
+    cards.forEach(function (card) {
+        card.addEventListener('click', function () {
+            openModal(card);
+        });
+    });
+
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    if (backdrop) backdrop.addEventListener('click', closeModal);
+
+    modal.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeModal();
+    });
+}
 
 // ヒーローKV：Swiper（3枚スライド・自動＆クリック・右縦パギネーション）
 function initKvSwiper() {
@@ -83,6 +184,93 @@ function initReasonPin() {
             var x = moveProgress * -(slides - 1) * 56;
             track.style.transform = 'translate3d(' + x + 'vw, 0, 0)';
         });
+        ticking = false;
+    }
+
+    function onScroll() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+            ticking = true;
+        }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', update);
+    window.addEventListener('load', update);
+    update();
+}
+
+// 課題セクション：ピン止め＋スクロールで4枚が四方から中央写真へ寄る
+// data-problem-converge="-1 -1" のように符号で方向（左/上が負）
+function initProblemPin() {
+    var problemWrap = document.querySelector('.problem-pin-wrap');
+    if (!problemWrap) return;
+
+    var headerEl = document.querySelector('.header');
+    var ticking = false;
+    var reduceMotion = typeof window.matchMedia === 'function'
+        && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function easeInOutCubic(t) {
+        return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    }
+
+    var spreadX = 140;
+    var spreadY = 104;
+
+    function parseConverge(card) {
+        var raw = card.getAttribute('data-problem-converge');
+        if (!raw || typeof raw !== 'string') return { sx: 0, sy: 0 };
+        var parts = raw.trim().split(/\s+/);
+        return {
+            sx: parseFloat(parts[0]) || 0,
+            sy: parseFloat(parts[1]) || 0
+        };
+    }
+
+    function resetProblemAnim() {
+        var cards = problemWrap.querySelectorAll('.problem-card[data-problem-converge]');
+        var center = problemWrap.querySelector('.problem-center');
+        cards.forEach(function (c) { c.style.cssText = ''; });
+        if (center) center.style.cssText = '';
+    }
+
+    function update() {
+        if (window.innerWidth <= 1024) {
+            resetProblemAnim();
+            ticking = false;
+            return;
+        }
+
+        var headerH = (headerEl && headerEl.offsetHeight) || 72;
+        var scrollY = window.scrollY || window.pageYOffset;
+        var activeVh = Math.max(1, window.innerHeight - headerH);
+
+        var rect = problemWrap.getBoundingClientRect();
+        var wrapTop = scrollY + rect.top;
+        var stickyStart = wrapTop - headerH;
+        var total = Math.max(1, problemWrap.offsetHeight - activeVh);
+        var rawProgress = clamp((scrollY - stickyStart) / total, 0, 1);
+        var progress = reduceMotion ? 1 : easeInOutCubic(rawProgress);
+
+        var cards = problemWrap.querySelectorAll('.problem-card[data-problem-converge]');
+        cards.forEach(function (card) {
+            var dir = parseConverge(card);
+            var tx = dir.sx * spreadX * (1 - progress);
+            var ty = dir.sy * spreadY * (1 - progress);
+            var op = clamp(0.52 + 0.48 * progress, 0, 1);
+            card.style.transform = 'translate3d(' + tx + 'px, ' + ty + 'px, 0)';
+            card.style.opacity = String(op);
+        });
+
+        var center = problemWrap.querySelector('.problem-center');
+        if (center) {
+            var scale = 0.93 + 0.07 * progress;
+            var op = clamp(0.7 + 0.3 * progress, 0, 1);
+            center.style.transform = 'scale(' + scale + ')';
+            center.style.opacity = String(op);
+        }
+
         ticking = false;
     }
 
@@ -413,17 +601,15 @@ function initParallax() {
     });
 }
 
-// 数字カウントアップアニメーション
-const counters = document.querySelectorAll('.metallic-gold');
-let counted = false;
-
-window.addEventListener('scroll', function() {
-    if (counted) return;
+// ヒーロー内の数字カウントアップ（IntersectionObserver で1回だけ・全ページ scroll 負荷を避ける）
+function initHeroStatCounters() {
     var heroSection = document.querySelector('.kv');
-    if (!heroSection) return;
-    var sectionPos = heroSection.getBoundingClientRect().top;
-    var screenPos = window.innerHeight;
-    if (sectionPos < screenPos && sectionPos > -heroSection.offsetHeight) {
+    if (!heroSection || typeof IntersectionObserver === 'undefined') return;
+    var done = false;
+    function run() {
+        if (done) return;
+        done = true;
+        var counters = heroSection.querySelectorAll('.metallic-gold');
         counters.forEach(function(counter) {
             var target = counter.textContent;
             if (target.match(/^\d+/) && counter.closest('.grid-cols-3')) {
@@ -433,9 +619,18 @@ window.addEventListener('scroll', function() {
                 }
             }
         });
-        counted = true;
     }
-}, { passive: true });
+    var io = new IntersectionObserver(function (entries) {
+        for (var i = 0; i < entries.length; i++) {
+            if (entries[i].isIntersecting) {
+                run();
+                io.disconnect();
+                return;
+            }
+        }
+    }, { root: null, rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+    io.observe(heroSection);
+}
 
 function animateCounter(element, target, originalText) {
     let current = 0;
@@ -455,24 +650,25 @@ function animateCounter(element, target, originalText) {
     }, stepTime);
 }
 
-// フォーム入力時のフォーカス／ブラー（1回の blur で border + boxShadow をまとめて処理）
-document.querySelectorAll('input[required], textarea[required], select').forEach(function(field) {
-    field.addEventListener('focus', function() {
-        this.style.borderColor = 'rgba(201, 169, 97, 0.5)';
-        this.style.boxShadow = '0 0 0 3px rgba(201, 169, 97, 0.1)';
-    });
-    field.addEventListener('blur', function() {
-        this.style.boxShadow = 'none';
-        if (this.value.trim()) {
-            clearFieldError(this);
-            if (this.tagName !== 'SELECT') {
-                this.style.borderColor = 'rgba(201, 169, 97, 0.5)';
+function initContactFieldFocusStyles() {
+    document.querySelectorAll('input[required], textarea[required], select').forEach(function(field) {
+        field.addEventListener('focus', function() {
+            this.style.borderColor = 'rgba(201, 169, 97, 0.5)';
+            this.style.boxShadow = '0 0 0 3px rgba(201, 169, 97, 0.1)';
+        });
+        field.addEventListener('blur', function() {
+            this.style.boxShadow = 'none';
+            if (this.value.trim()) {
+                clearFieldError(this);
+                if (this.tagName !== 'SELECT') {
+                    this.style.borderColor = 'rgba(201, 169, 97, 0.5)';
+                }
+            } else {
+                this.style.borderColor = 'rgba(139, 149, 165, 0.3)';
             }
-        } else {
-            this.style.borderColor = 'rgba(139, 149, 165, 0.3)';
-        }
+        });
     });
-});
+}
 
 // ページ読み込み完了時：ヘッダー背景切り替え ＋ トップへ戻るボタン表示
 window.addEventListener('load', function() {

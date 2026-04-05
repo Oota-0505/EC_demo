@@ -110,29 +110,32 @@
         </a>
     </section>
 
-    <!-- 悩み共感セクション（LOSSCAN-style・中央写真は名刺風） -->
+    <!-- 悩み共感セクション：スクロール連動でカードが中央写真へ寄る（デスクトップ） -->
     <section id="problem" class="problem-section">
-        <div class="container mx-auto px-6">
-            <div class="problem-section-header fade-in">
-                <h2 class="problem-section-title">このような<span class="problem-section-title--accent metallic-gold">課題</span>を抱えていませんか？</h2>
-                <div class="problem-section-title__line"></div>
-            </div>
-            
-            <div class="problem-arena fade-in">
-                <div class="problem-card problem-card--tl">
-                    <p class="problem-card__text">次世代を任せられる人材が育たない</p>
-                </div>
-                <div class="problem-center problem-center--namecard">
-                    <img src="images/N.png" alt="経営課題に向き合うビジネスパーソン" width="320" height="280" loading="lazy">
-                </div>
-                <div class="problem-card problem-card--tr">
-                    <p class="problem-card__text">経営者視点を持つリーダーが不足している</p>
-                </div>
-                <div class="problem-card problem-card--bl">
-                    <p class="problem-card__text">管理職が部門最適に偏り、全社最適で判断できない</p>
-                </div>
-                <div class="problem-card problem-card--br">
-                    <p class="problem-card__text">DX・AIの技術はあるが、経営戦略につなぐ人材がいない</p>
+        <div class="problem-pin-wrap">
+            <div class="problem-pinned">
+                <div class="container mx-auto px-6 problem-pinned-inner">
+                    <div class="problem-section-header fade-in">
+                        <h2 class="problem-section-title">このような<span class="problem-section-title--accent metallic-gold">課題</span>を抱えていませんか？</h2>
+                        <div class="problem-section-title__line"></div>
+                    </div>
+                    <div class="problem-arena">
+                        <div class="problem-card problem-card--tl" data-problem-converge="-1 -1">
+                            <p class="problem-card__text">次世代を任せられる人材が育たない</p>
+                        </div>
+                        <div class="problem-card problem-card--tr" data-problem-converge="1 -1">
+                            <p class="problem-card__text">経営者視点を持つリーダーが不足している</p>
+                        </div>
+                        <div class="problem-card problem-card--bl" data-problem-converge="-1 1">
+                            <p class="problem-card__text">管理職が部門最適に偏り、全社最適で判断できない</p>
+                        </div>
+                        <div class="problem-card problem-card--br" data-problem-converge="1 1">
+                            <p class="problem-card__text">DX・AIの技術はあるが、経営戦略につなぐ人材がいない</p>
+                        </div>
+                        <div class="problem-center problem-center--namecard">
+                            <img src="images/problem-center-portrait.png" alt="経営課題に向き合うビジネスパーソン" width="320" height="280" loading="lazy">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -165,6 +168,7 @@
                             <div class="reason-slide-num">03</div>
                             <h3 class="reason-slide-title">実務への応用</h3>
                             <p class="reason-slide-desc">シミュレーション後のフィードバック、実務課題への応用（PDCA改善サイクル）まで一貫支援</p>
+                            <p class="reason-slide-note">※オプション(要相談)</p>
                         </div>
                         <div class="reason-slide">
                             <div class="reason-slide-img reason-slide-video">
@@ -257,7 +261,7 @@
         <div class="features-layout">
             <div class="features-visual">
                 <div class="features-visual__img-wrap">
-                    <img class="features-visual__img js-parallax-img" src="images/benefits-hero.png" alt="体感できる5つの視点" width="1200" height="800" loading="lazy">
+                    <img class="features-visual__img js-parallax-img" src="images/Screenshot 2026-04-05 at 15.22.25.png" alt="体得できる5つの視点（感覚経営から戦略経営へ）" width="1304" height="1794" loading="lazy">
                 </div>
                 <div class="features-visual__overlay"></div>
                 <div class="features-visual__caption">
@@ -268,7 +272,6 @@
             <div class="features-content">
                 <div class="features-content__inner">
                     <div class="features-content__intro">
-                        <span class="features-content__label">体感できる5つの視点</span>
                         <h3 class="features-content__title">経営者として必須となる<br>５つの視点を実践的に習得</h3>
                         <p class="features-content__lead">
                             経営シミュレーション体験を通じて、数字で語れる幹部として必要な視点を身につけます。
@@ -366,6 +369,7 @@
                             <li>継続的な成長支援</li>
                             <li>フォローアップ体制</li>
                         </ul>
+                        <p class="flow-card__note">※オプション(要相談)</p>
                     </article>
                 </div>
                 <div class="flow-cta-box fade-in">
@@ -473,79 +477,82 @@
             
             <!-- 導入企業の声＋カード下に流れるロゴ -->
             <div class="benefits-voices-with-logos">
-            <!-- カード非表示時は benefits-voices に benefits-voices--cards-hidden を付与。表示する際は外す -->
-            <div class="benefits-voices benefits-voices--stack benefits-voices--cards-hidden max-w-6xl mx-auto">
-                <div class="text-center mb-12 fade-in benefits-voices__intro">
-                    <h3 class="text-3xl md:text-4xl font-serif font-bold text-silver-light mb-4"><span class="metallic-gold">導入企業</span>の声</h3>
-                    <p class="benefits-voices__lead">導入企業の声は順次公開予定です。現在コンテンツを準備しております。</p>
+            <div class="participant-voices max-w-6xl mx-auto px-4 md:px-6 fade-in">
+                <div class="participant-voices__intro text-center mb-10 md:mb-12">
+                    <h3 class="text-3xl md:text-4xl font-serif font-bold text-silver-light mb-4"><span class="metallic-gold">受講生</span>の声</h3>
+                    <p class="participant-voices__lead">EXECUTIVE COMPASS を受講された方々からいただいた、プログラムへのリアルな声をご紹介します。</p>
                 </div>
-                <div class="benefits-voices__preparing fade-in" role="status" aria-live="polite">
-                    <p class="benefits-voices__preparing-label">現在準備中</p>
-                    <p class="benefits-voices__preparing-note">掲載企業の情報が整い次第、こちらにてご紹介いたします。</p>
+                <div class="participant-voices__grid">
+                    <button type="button" class="participant-voice-card" data-voice-template="participant-voice-body-1" aria-haspopup="dialog" aria-controls="participantVoiceModalDialog">
+                        <div class="participant-voice-card__photo" aria-hidden="true">
+                            <img src="images/voice-participant-it.png" alt="" loading="lazy" width="400" height="400">
+                        </div>
+                        <div class="participant-voice-card__body">
+                            <div class="participant-voice-card__meta">
+                            <p class="participant-voice-card__industry">IT企業<br>（DX・AI推進、システム開発）</p>
+                            <p class="participant-voice-card__role">大手IT企業 / ソリューション事業部長</p>
+                            </div>
+                            <p class="participant-voice-card__headline">商品サービスの販売集団から、数字で語れる「ビジネスリーダー」へ。ROIを意識した提案で現場の行動が劇的に変化。</p>
+                            <span class="participant-voice-card__cta"><i class="fas fa-quote-left" aria-hidden="true"></i> 続きを読む（クリックで全文）</span>
+                        </div>
+                    </button>
+                    <button type="button" class="participant-voice-card" data-voice-template="participant-voice-body-2" aria-haspopup="dialog" aria-controls="participantVoiceModalDialog">
+                        <div class="participant-voice-card__photo" aria-hidden="true">
+                            <img src="images/voice-participant-consulting.png" alt="" loading="lazy" width="400" height="400">
+                        </div>
+                        <div class="participant-voice-card__body">
+                            <div class="participant-voice-card__meta">
+                            <p class="participant-voice-card__industry">コンサルティング企業<br>（経営・組織コンサル）</p>
+                            <p class="participant-voice-card__role">総合コンサルティングファーム / 人材開発責任者（パートナー）</p>
+                            </div>
+                            <p class="participant-voice-card__headline">顧客と同じ「経営者の言語」で対話できるか。理論を実践へと昇華させる、次世代リーダー必修のプログラム。</p>
+                            <span class="participant-voice-card__cta"><i class="fas fa-quote-left" aria-hidden="true"></i> 続きを読む（クリックで全文）</span>
+                        </div>
+                    </button>
+                    <button type="button" class="participant-voice-card" data-voice-template="participant-voice-body-3" aria-haspopup="dialog" aria-controls="participantVoiceModalDialog">
+                        <div class="participant-voice-card__photo" aria-hidden="true">
+                            <img src="images/voice-participant-apparel.png" alt="" loading="lazy" width="400" height="400">
+                        </div>
+                        <div class="participant-voice-card__body">
+                            <div class="participant-voice-card__meta">
+                            <p class="participant-voice-card__industry">アパレル企業<br>（小売・ブランド運営）</p>
+                            <p class="participant-voice-card__role">大手アパレル企業 / 営業本部長 兼 人事担当役員</p>
+                            </div>
+                            <p class="participant-voice-card__headline">「感覚」から「根拠」へ。店舗やブランドの『部分最適』を打破し、全社視点を持つ大事さを取得。</p>
+                            <span class="participant-voice-card__cta"><i class="fas fa-quote-left" aria-hidden="true"></i> 続きを読む（クリックで全文）</span>
+                        </div>
+                    </button>
                 </div>
-                <!--
-                  声カードを公開する手順:
-                  1) 上の .benefits-voices__preparing ブロックを削除
-                  2) 親の benefits-voices から benefits-voices--cards-hidden を削除
-                  3) 下の .benefits-voice-cards-wrap から benefits-voice-cards-wrap--hidden を削除
-                  4) .benefits-voice-card を複製し、画像・本文・社名・業種・タグを差し替え（3列グリッドのまま枚数追加可）
-                  5) 見出し下リード（.benefits-voices__lead）を公開向けの文言に差し替え
-                -->
-                <div class="benefits-voice-cards-wrap benefits-voice-cards-wrap--hidden">
-                <div class="benefits-voice-cards grid md:grid-cols-3 fade-in">
-                    <div class="benefits-voice-card">
-                        <div class="benefits-voice-card__image">
-                            <img src="images/voice-card-1.png" alt="株式会社ビジネスソリューションズ" loading="lazy">
-                        </div>
-                        <div class="benefits-voice-card__body">
-                            <p class="benefits-voice-card__text">EXECUTIVE COMPASSの導入により、若手リーダー層の経営視点が劇的に変化しました。数字への意識が高まり、現場での意思決定スピードが加速しています。座学では得られない実践的な経営感覚を、次世代リーダー候補に効果的に習得させることができました。</p>
-                            <div class="benefits-voice-card__company-name">株式会社ビジネスソリューションズ 様</div>
-                            <p class="benefits-voice-card__desc">業種: コンサルティング・人材育成支援</p>
-                            <div class="benefits-voice-card__tags">
-                                <span class="benefits-voice-card__tag">経営視点育成</span>
-                                <span class="benefits-voice-card__tag">リーダー育成</span>
-                            </div>
-                        </div>
+                <template id="participant-voice-body-1">
+                    <p class="participant-voice-modal__quote">「当社の課題は、高いソリューション力を持ちながらも、それを『顧客の経営課題の解決』や『自社の収益』に結びつけられる人材が不足していることでした。EXECUTIVE COMPASSを導入して最も驚いたのは、現場の営業やプロジェクトリーダーの『視座の大きな変化』です。<br><br>単なる機能の提案ではなく、B/SやP/Lの構造を理解した上で、ROI（投資対効果）を軸とした戦略的な判断ができるようになりました。ゲーム形式のシミュレーションだからこそ、座学では決して身につかない『経営者のヒリヒリとした意思決定』を疑似体験でき、それがそのまま実務での行動変容に直結しています。人的資本投資として、これほど確実なリターンを生むプログラムはないです。」</p>
+                </template>
+                <template id="participant-voice-body-2">
+                    <p class="participant-voice-modal__quote">「我々コンサルタントは常にクライアントの経営層と対峙しますが、若手〜中堅層はどうしてもフレームワークに頼った頭でっかちな提案や、『部門最適』の視点に偏りがちでした。本プログラムでは、外部環境の把握からリスクコントロール、財務データ構造まで、経営に必要な5つの視点を体感的に叩き込まれる内容でした。<br><br>自ら会社を回す経営体験を通じて、机上の空論ではない『生きた経営感覚』を掴んだ社員たちは、クライアントとの対話の質が全く別物になりました。次世代の経営幹部候補はもちろん、顧客のビジネスを本気で牽引したいと考える人材に受講させたいです。」</p>
+                </template>
+                <template id="participant-voice-body-3">
+                    <p class="participant-voice-modal__quote">「アパレル・小売業界は現場の『感覚』が重視されがちで、数字に基づく『戦略経営』へのシフトが長年の課題でした。各ブランドの責任者は自部門の売上には熱心ですが、全社的な『人的資本の最適配置』や『キャッシュフロー』の視点を持つ人材はごく僅か。いや、ほぼいないに近いです。<br><br>EXECUTIVE COMPASS受講後、彼らの口から『利益率』や『企業会計』といった言葉が自然に出るようになり、在庫管理や人員配置の意思決定スピードが速くなりました。『数字で語れる幹部が利益率を変える』という言葉通り、現場発信の利益改善策が生まれています。企業変革を急ぐすべての経営陣に強くお勧めします。」</p>
+                </template>
+            </div>
+            <div id="participantVoiceModal" class="participant-voice-modal" aria-hidden="true">
+                <div class="participant-voice-modal__backdrop" tabindex="-1"></div>
+                <div id="participantVoiceModalDialog" class="participant-voice-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="participantVoiceModalTitle" tabindex="-1">
+                    <button type="button" class="participant-voice-modal__close" aria-label="閉じる"><i class="fas fa-times" aria-hidden="true"></i></button>
+                    <div class="participant-voice-modal__header">
+                        <p class="participant-voice-modal__industry" id="participantVoiceModalIndustry"></p>
+                        <p class="participant-voice-modal__role" id="participantVoiceModalRole"></p>
+                        <h4 id="participantVoiceModalTitle" class="participant-voice-modal__title"></h4>
                     </div>
-                    <div class="benefits-voice-card">
-                        <div class="benefits-voice-card__image">
-                            <img src="images/voice-card-2.png" alt="株式会社データリーフ" loading="lazy">
-                        </div>
-                        <div class="benefits-voice-card__body">
-                            <p class="benefits-voice-card__text">DX推進リーダーに経営視点を持たせることが課題でしたが、このプログラムで技術と経営の両面を理解する人材育成に成功しました。投資対効果を意識した提案ができるようになり、事業成果に直結しています。</p>
-                            <div class="benefits-voice-card__company-name">株式会社データリーフ 様</div>
-                            <p class="benefits-voice-card__desc">業種: 情報サービス・イベント運営</p>
-                            <div class="benefits-voice-card__tags">
-                                <span class="benefits-voice-card__tag">経営視点育成</span>
-                                <span class="benefits-voice-card__tag">DX人材育成</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="benefits-voice-card">
-                        <div class="benefits-voice-card__image">
-                            <img src="images/voice-card-3.png" alt="川崎機械工業株式会社" loading="lazy">
-                        </div>
-                        <div class="benefits-voice-card__body">
-                            <p class="benefits-voice-card__text">EXECUTIVE COMPASSの導入により、若手リーダー層の経営視点が劇的に変化しました。数字への意識が高まり、現場での意思決定スピードが加速しています。座学では得られない実践的な経営感覚を、次世代リーダー候補に効果的に習得させることができました。</p>
-                            <div class="benefits-voice-card__company-name">川崎機械工業株式会社 様</div>
-                            <p class="benefits-voice-card__desc">業種: 製造業・メンテナンス</p>
-                            <div class="benefits-voice-card__tags">
-                                <span class="benefits-voice-card__tag">経営視点育成</span>
-                                <span class="benefits-voice-card__tag">リーダー育成</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    <div id="participantVoiceModalBody" class="participant-voice-modal__body"></div>
                 </div>
             </div>
             <!-- 取引先企業一覧 見出し（上に余白） -->
             <div class="benefits-logos-heading-wrap text-center mb-6 fade-in">
                 <h3 class="benefits-logos-heading"><span class="metallic-gold">取引先企業</span>一覧</h3>
             </div>
-            <!-- 企業ロゴ流れ（カード下・3行）＋注釈 -->
+            <!-- 企業ロゴ流れ（1行・右→左）＋注釈 -->
             <div class="benefits-logos-area">
             <div class="benefits-logos-bg" aria-hidden="true">
-                <div class="benefits-logos-row benefits-logos-row--1">
+                <div class="benefits-logos-row">
                     <div class="benefits-logos-track">
                     <div class="benefits-logos-slide">
                         <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_7.png" alt="導入企業"></div>
@@ -554,56 +561,12 @@
                         <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_18.png" alt="導入企業"></div>
                         <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_31.png" alt="導入企業"></div>
                         <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_12.png" alt="導入企業"></div>
-                    </div>
-                    <div class="benefits-logos-slide" aria-hidden="true">
-                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_7.png" alt="導入企業"></div>
-                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_24.png" alt="導入企業"></div>
-                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_3.png" alt="導入企業"></div>
-                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_18.png" alt="導入企業"></div>
-                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_31.png" alt="導入企業"></div>
-                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_12.png" alt="導入企業"></div>
-                    </div>
-                    <div class="benefits-logos-slide" aria-hidden="true">
-                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_7.png" alt="導入企業"></div>
-                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_24.png" alt="導入企業"></div>
-                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_3.png" alt="導入企業"></div>
-                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_18.png" alt="導入企業"></div>
-                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_31.png" alt="導入企業"></div>
-                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_12.png" alt="導入企業"></div>
-                    </div>
-                    </div>
-                </div>
-                <div class="benefits-logos-row benefits-logos-row--2">
-                    <div class="benefits-logos-track">
-                    <div class="benefits-logos-slide">
                         <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_5.png" alt="導入企業"></div>
                         <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_29.png" alt="導入企業"></div>
                         <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_14.png" alt="導入企業"></div>
                         <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_9.png" alt="導入企業"></div>
                         <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_26.png" alt="導入企業"></div>
                         <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_33.png" alt="導入企業"></div>
-                    </div>
-                    <div class="benefits-logos-slide" aria-hidden="true">
-                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_5.png" alt="導入企業"></div>
-                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_29.png" alt="導入企業"></div>
-                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_14.png" alt="導入企業"></div>
-                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_9.png" alt="導入企業"></div>
-                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_26.png" alt="導入企業"></div>
-                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_33.png" alt="導入企業"></div>
-                    </div>
-                    <div class="benefits-logos-slide" aria-hidden="true">
-                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_5.png" alt="導入企業"></div>
-                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_29.png" alt="導入企業"></div>
-                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_14.png" alt="導入企業"></div>
-                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_9.png" alt="導入企業"></div>
-                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_26.png" alt="導入企業"></div>
-                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_33.png" alt="導入企業"></div>
-                    </div>
-                    </div>
-                </div>
-                <div class="benefits-logos-row benefits-logos-row--3">
-                    <div class="benefits-logos-track">
-                    <div class="benefits-logos-slide">
                         <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_21.png" alt="導入企業"></div>
                         <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_6.png" alt="導入企業"></div>
                         <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_27.png" alt="導入企業"></div>
@@ -612,6 +575,18 @@
                         <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_19.png" alt="導入企業"></div>
                     </div>
                     <div class="benefits-logos-slide" aria-hidden="true">
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_7.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_24.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_3.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_18.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_31.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_12.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_5.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_29.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_14.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_9.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_26.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_33.png" alt="導入企業"></div>
                         <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_21.png" alt="導入企業"></div>
                         <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_6.png" alt="導入企業"></div>
                         <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_27.png" alt="導入企業"></div>
@@ -620,6 +595,18 @@
                         <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_19.png" alt="導入企業"></div>
                     </div>
                     <div class="benefits-logos-slide" aria-hidden="true">
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_7.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_24.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_3.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_18.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_31.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_12.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_5.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_29.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_14.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_9.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_26.png" alt="導入企業"></div>
+                        <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_33.png" alt="導入企業"></div>
                         <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_21.png" alt="導入企業"></div>
                         <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_6.png" alt="導入企業"></div>
                         <div class="benefits-logo-card"><img src="images/C_banner/clients_banner_27.png" alt="導入企業"></div>
@@ -738,10 +725,10 @@
     <!-- 羅針盤の針カスタムカーソル（ゴールド・点滅・マウス追随） -->
     <div class="cursor-needle" id="cursorNeedle" aria-hidden="true"></div>
 
-    <!-- 右下ふわっと表示の無料体験受付中ボタン -->
-    <div class="cta-float" id="ctaFloat" role="complementary" aria-label="無料体験実施中">
-        <a href="#" class="cta-float__link" aria-label="無料体験のお問い合わせ">
-            <img src="images/cta-float.png" alt="無料体験実施中　お問い合わせはこちら" width="200" height="130" loading="lazy">
+    <!-- 右下CTA画像の切替: cta-contact-banner.png（シンプル版） / cta-contact-banner-v2.png（キャッチ・ボタン入り） -->
+    <div class="cta-float" id="ctaFloat" role="complementary" aria-label="お問い合わせ">
+        <a href="#contact" class="cta-float__link" aria-label="お問い合わせはこちら">
+            <img src="images/cta-contact-banner.png" alt="お問い合わせはこちら" width="1618" height="640" loading="lazy">
         </a>
     </div>
 
