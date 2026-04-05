@@ -1147,12 +1147,13 @@
             flex: 1;
             min-width: 0;
         }
-        .features-list__title {
+        .features-content .features-list__title {
             font-family: 'Cormorant Garamond', serif;
             font-size: clamp(1.1rem, 2vw, 1.4rem);
             font-weight: 600;
-            color: var(--gold-accent);
-            text-shadow: 0 0 18px rgba(201, 169, 97, 0.22);
+            color: #c9a961;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.45),
+                         0 0 20px rgba(201, 169, 97, 0.28);
             margin-bottom: 0.5rem;
         }
         .features-list__body {
@@ -1714,6 +1715,8 @@
         .section-benefits {
             position: relative;
             overflow-x: hidden;
+            /* 共通 8rem より下だけ詰める（ロゴ帯＋セクション余白の二重感を解消） */
+            padding-bottom: 5rem;
             background-image: linear-gradient(to bottom, rgba(10, 22, 40, 0.82), rgba(26, 41, 66, 0.88)),
                               url('../images/problem-story-bg.jpg');
             background-size: cover;
@@ -1727,190 +1730,262 @@
                 padding-top: 5rem;
                 padding-bottom: 5rem;
             }
-        }
-
-        /* プログラム内容（#flow）— 白カード＋ゴールドアクセントでサイト統一 */
-        .flow-body {
-            padding: 0;
-            --flow-icon-size: 4rem;
-            --flow-icon-offset-top: -1.1rem;
-            --flow-icon-offset-left: -0.35rem;
-            --flow-cta-icon-size: 4rem;
-            --flow-cta-icon-offset-top: -1.05rem;
-            --flow-cta-icon-offset-left: -0.25rem;
-        }
-        .flow-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.75rem;
-            margin-bottom: 2.5rem;
-        }
-        @media (min-width: 768px) {
-            .flow-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 2rem;
-                margin-bottom: 3.5rem;
+            .section-benefits {
+                padding-bottom: 3.25rem;
             }
         }
-        .flow-card {
+
+        /* プログラム内容（#flow）— シネマティック・スプリット（左コンテンツ・右動画） */
+        .section-flow {
             position: relative;
-            background: linear-gradient(165deg, #ffffff 0%, #fafbfc 50%, #f8f9fb 100%);
-            border: 1px solid rgba(15, 23, 42, 0.06);
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(15, 23, 42, 0.06),
-                        0 2px 8px rgba(15, 23, 42, 0.04),
-                        inset 0 1px 0 rgba(255, 255, 255, 0.95);
-            padding: 2.25rem 1.5rem 1.75rem;
-            transition: transform .35s cubic-bezier(0.22, 1, 0.36, 1),
-                        border-color .3s ease,
-                        box-shadow .35s ease;
+            overflow: hidden;
+            background-color: #0a1628; /* section-navyに近い色 */
+        }
+        .flow-split-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: clamp(2.5rem, 5vw, 4rem);
+            align-items: flex-start;
+            margin-bottom: clamp(2.5rem, 6vw, 4rem);
+        }
+        @media (min-width: 1024px) {
+            .flow-split-layout {
+                grid-template-columns: minmax(0, 1fr) minmax(0, 1.52fr);
+                gap: 3.5rem 3.25rem;
+                align-items: start;
+            }
+        }
+        @media (min-width: 1280px) {
+            .flow-split-layout {
+                grid-template-columns: minmax(0, 1fr) minmax(0, 1.68fr);
+                gap: 4rem 3.5rem;
+            }
+        }
+        .flow-content-col {
+            min-width: 0;
+        }
+        
+        /* 左側：ステップデザイン（洗練されたリスト） */
+        .flow-steps {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            text-align: center;
+            gap: 3rem;
+            position: relative;
         }
-        /* 3枚目のみ注意書きをカード下端に寄せる */
-        .flow-card.flow-card--3 {
-            align-items: stretch;
-        }
-        .flow-card:hover {
-            transform: translateY(-6px);
-            border-color: rgba(201, 169, 97, 0.28);
-            box-shadow: 0 20px 48px rgba(15, 23, 42, 0.1),
-                        0 8px 24px rgba(201, 169, 97, 0.08),
-                        0 2px 8px rgba(15, 23, 42, 0.05),
-                        inset 0 1px 0 rgba(255, 255, 255, 1);
-        }
-        .flow-card__number {
+        /* 左側の縦線 */
+        .flow-steps::before {
+            content: '';
             position: absolute;
-            top: var(--flow-icon-offset-top);
-            left: var(--flow-icon-offset-left);
-            width: var(--flow-icon-size);
-            height: var(--flow-icon-size);
-            border-radius: 0;
-            background: transparent;
-            color: transparent;
-            font-size: 0;
+            left: 1.75rem;
+            top: 1rem;
+            bottom: 1rem;
+            width: 1px;
+            background: linear-gradient(to bottom, rgba(201, 169, 97, 0.5), rgba(201, 169, 97, 0.1));
+            z-index: 0;
+        }
+        .flow-step {
+            position: relative;
+            padding-left: 5rem;
+            z-index: 1;
+        }
+        .flow-step__header {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            margin-bottom: 1.25rem;
+            position: relative;
+        }
+        .flow-step__number {
+            position: absolute;
+            left: -5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 3.5rem;
+            height: 3.5rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-shrink: 0;
-            box-shadow: none;
-            border: 0;
-            z-index: 2;
+            font-size: 0;
+            color: transparent;
+            z-index: 3;
+            pointer-events: none;
         }
-        .flow-card__number::before {
+        .flow-step__number::before {
             content: '';
-            width: var(--flow-icon-size);
-            height: var(--flow-icon-size);
+            width: 2.95rem;
+            height: 2.95rem;
             background-image: url('../images/icon.png');
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
             filter: drop-shadow(0 3px 6px rgba(10, 22, 40, 0.22));
+            transition: transform 0.3s ease, filter 0.3s ease;
         }
-        .flow-card__title {
+        .flow-step:hover .flow-step__number::before {
+            transform: scale(1.06);
+            filter: drop-shadow(0 4px 10px rgba(201, 169, 97, 0.35));
+        }
+        .flow-step__title {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.35rem;
+            font-size: 1.5rem;
             font-weight: 700;
-            color: #9f7e3a;
-            margin: 1.5rem 0 1.25rem 0;
-            letter-spacing: 0.02em;
-            text-shadow: 0 1px 0 rgba(255, 255, 255, 0.55);
+            color: #c9a961;
+            margin: 0;
+            letter-spacing: 0.05em;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5),
+                         0 0 18px rgba(201, 169, 97, 0.25);
         }
-        .flow-card__list {
+        .flow-step__list {
             list-style: none;
             margin: 0;
             padding: 0;
-            text-align: left;
-            width: 100%;
         }
-        .flow-card__list li {
+        .flow-step__list li {
             position: relative;
-            padding-left: 1.75rem;
-            margin-bottom: 0.65rem;
-            font-size: 0.9rem;
-            color: #475569;
-            line-height: 1.5;
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+            color: #cbd5e1;
+            line-height: 1.6;
         }
-        .flow-card__list li:last-child {
+        .flow-step__list li:last-child {
             margin-bottom: 0;
         }
-        .flow-card__list li::before {
+        .flow-step__list li::before {
             content: '';
             position: absolute;
             left: 0;
-            top: 0.35rem;
-            width: 1rem;
-            height: 1rem;
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' fill='%23c9a961'%3E%3Cpath d='M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm-42.7 318.9L106.7 254.5l23.8-23.2 82.8 84.8 162.2-162.2 23.8 23.2-186 181z'/%3E%3C/svg%3E") center/contain no-repeat;
+            top: 0.5rem;
+            width: 0.5rem;
+            height: 0.5rem;
+            border-top: 1px solid #c9a961;
+            border-right: 1px solid #c9a961;
+            transform: rotate(45deg);
         }
-        .flow-card__note {
-            margin: auto 0 0;
-            padding-top: 0.85rem;
+        .flow-step__note {
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            color: #94a3b8;
+        }
+
+        /* 右側：動画（タブレット以下は sticky 解除 — オーバーフロー・タップ領域の不具合防止） */
+        .flow-video-col {
+            position: static;
+            top: auto;
+            margin-top: 0;
+            min-width: 0;
+        }
+        @media (min-width: 1024px) {
+            .flow-video-col {
+                position: sticky;
+                top: clamp(5.5rem, 14vh, 7.5rem);
+                margin-top: 4.25rem;
+            }
+        }
+        @media (min-width: 1280px) {
+            .flow-video-col {
+                margin-top: 5rem;
+            }
+        }
+        .flow-video-wrapper {
+            position: relative;
             width: 100%;
-            text-align: left;
-            font-size: 0.72rem;
-            line-height: 1.45;
-            color: #64748b;
-            letter-spacing: 0.02em;
+            max-width: none;
+            aspect-ratio: 16 / 9;
+            min-height: 0;
         }
-        .flow-card__arrow {
-            position: absolute;
-            right: -2.9rem;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 3.5rem;
-            height: 3.5rem;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            color: rgba(201, 169, 97, 0.7);
-            font-size: 1.8rem;
-            transition: color .25s ease;
+        .flow-video-wrapper > video {
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+            display: block;
+            background: #000;
+            object-fit: cover;
+            outline: none;
+            box-shadow: 0 28px 56px rgba(0, 0, 0, 0.55),
+                        0 12px 28px rgba(0, 0, 0, 0.35),
+                        0 0 0 1px rgba(201, 169, 97, 0.12);
         }
-        .flow-card__arrow i {
-            font-size: inherit;
+        /* 針カーソル＋ネイティブ controls 併用時の二重ポインター防止（#flow の video[controls] のみ） */
+        body.cursor-needle-active .section-flow .flow-video-wrapper > video[controls],
+        body.cursor-needle-active .section-flow .flow-video-wrapper > video[controls]::-webkit-media-controls-enclosure,
+        body.cursor-needle-active .section-flow .flow-video-wrapper > video[controls]::-webkit-media-controls-panel,
+        body.cursor-needle-active .section-flow .flow-video-wrapper > video[controls]::-webkit-media-controls-play-button,
+        body.cursor-needle-active .section-flow .flow-video-wrapper > video[controls]::-webkit-media-controls-overlay-play-button,
+        body.cursor-needle-active .section-flow .flow-video-wrapper > video[controls]::-webkit-media-controls-timeline,
+        body.cursor-needle-active .section-flow .flow-video-wrapper > video[controls]::-webkit-media-controls-current-time-display,
+        body.cursor-needle-active .section-flow .flow-video-wrapper > video[controls]::-webkit-media-controls-time-remaining-display,
+        body.cursor-needle-active .section-flow .flow-video-wrapper > video[controls]::-webkit-media-controls-mute-button,
+        body.cursor-needle-active .section-flow .flow-video-wrapper > video[controls]::-webkit-media-controls-volume-slider,
+        body.cursor-needle-active .section-flow .flow-video-wrapper > video[controls]::-webkit-media-controls-fullscreen-button {
+            cursor: none !important;
         }
-        .flow-card:hover .flow-card__arrow {
-            color: #c9a961;
-        }
-        @media (min-width: 768px) {
-            .flow-card__arrow {
-                display: flex;
-            }
-            .flow-card--3 .flow-card__arrow {
-                display: none;
-            }
-        }
+        /* アクティブ・ラーニングの効果 — 全幅バンド（1〜3ステップとは別枠） */
         .flow-cta-box {
-            background: linear-gradient(165deg, #ffffff 0%, #fafbfc 100%);
-            border: 1px solid rgba(201, 169, 97, 0.25);
+            --flow-cta-icon-size: 4rem;
+            --flow-icon-offset-top: -1.05rem;
+            --flow-icon-offset-left: -0.25rem;
+            background: rgba(30, 41, 59, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(201, 169, 97, 0.3);
             border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(15, 23, 42, 0.06),
-                        0 2px 8px rgba(15, 23, 42, 0.04),
-                        inset 0 1px 0 rgba(255, 255, 255, 0.95);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.05);
             padding: 0;
             position: relative;
             overflow: visible;
-            transition: border-color .3s ease, box-shadow .35s ease;
+            transition: border-color .3s ease, box-shadow .35s ease, background .3s ease;
+            margin-top: 0;
+            width: 100%;
+        }
+        /* 全幅バンド：.flow-cta-box の transition が opacity/transform を潰していたため統合し、出現を滑らかに */
+        .flow-cta-box.fade-in--band {
+            opacity: 0;
+            transform: translate3d(0, 14px, 0);
+            transition: opacity 1.15s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 1.15s cubic-bezier(0.16, 1, 0.3, 1),
+                        border-color 0.35s ease,
+                        box-shadow 0.4s ease,
+                        background 0.35s ease;
+        }
+        .flow-cta-box.fade-in--band.visible {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .flow-cta-box.fade-in--band {
+                transition-duration: 0.01ms;
+                transform: none;
+            }
+            .flow-cta-box.fade-in--band:not(.visible) {
+                opacity: 0;
+            }
+            .flow-cta-box.fade-in--band.visible {
+                opacity: 1;
+                transform: none;
+            }
+        }
+        .flow-cta-box--full {
+            grid-column: 1 / -1;
         }
         .flow-cta-box:hover {
-            border-color: rgba(201, 169, 97, 0.4);
-            box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08),
-                        0 4px 16px rgba(201, 169, 97, 0.1);
+            background: rgba(30, 41, 59, 0.6);
+            border-color: rgba(201, 169, 97, 0.5);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4),
+                        0 4px 16px rgba(201, 169, 97, 0.2);
         }
         .flow-cta-box__content {
             position: relative;
-            padding: 3.2rem 1.5rem 2rem;
+            padding: 3rem 1.5rem 2rem;
             text-align: center;
-            max-width: 34rem;
+            max-width: 36rem;
             margin: 0 auto;
             z-index: 3;
         }
         .flow-cta-box__visual {
             position: relative;
-            min-height: 220px;
+            min-height: 200px;
             background-image: linear-gradient(to bottom right, rgba(10, 22, 40, 0.18), rgba(10, 22, 40, 0.6)),
                               url('../images/flow-active-learning.jpg');
             background-size: cover;
@@ -1940,40 +2015,60 @@
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.5rem;
             font-weight: 700;
-            color: #9f7e3a;
+            color: #c9a961;
             margin: 0 0 1rem 0;
             letter-spacing: 0.02em;
-            text-shadow: 0 1px 0 rgba(255, 255, 255, 0.55);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         }
         .flow-cta-box__text {
             font-size: 0.95rem;
-            color: #475569;
+            color: #cbd5e1;
             line-height: 1.75;
             margin: 0;
         }
-        @media (min-width: 768px) {
-            .flow-cta-box {
+        @media (min-width: 1024px) {
+            .flow-cta-box--full {
                 display: grid;
-                grid-template-columns: minmax(0, 1fr) minmax(320px, 0.88fr);
+                grid-template-columns: minmax(0, 1.28fr) minmax(300px, 1fr);
+                align-items: stretch;
+                border-radius: 20px;
             }
-            .flow-cta-box__content {
-                padding: 3.4rem 2.1rem 2.25rem;
+            .flow-cta-box--full .flow-cta-box__content {
+                padding: 2.75rem 2.75rem 2.75rem 3.25rem;
                 text-align: left;
-                max-width: 32rem;
+                max-width: none;
                 margin: 0;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
             }
-            .flow-cta-box__icon {
+            .flow-cta-box--full .flow-cta-box__icon {
                 top: var(--flow-icon-offset-top);
                 left: var(--flow-icon-offset-left);
             }
-            .flow-cta-box__visual {
+            .flow-cta-box--full .flow-cta-box__visual {
+                min-height: 240px;
+                height: 100%;
                 border-radius: 0 20px 20px 0;
             }
-            .flow-cta-box__title {
-                font-size: 1.75rem;
+            .flow-cta-box--full .flow-cta-box__title {
+                font-size: clamp(1.65rem, 2.2vw, 2rem);
             }
-            .flow-cta-box__text {
-                font-size: 1rem;
+            .flow-cta-box--full .flow-cta-box__text {
+                font-size: 1.05rem;
+                line-height: 1.8;
+                max-width: 48rem;
+            }
+        }
+        @media (min-width: 1280px) {
+            .flow-cta-box--full {
+                grid-template-columns: minmax(0, 1.35fr) minmax(340px, 1fr);
+            }
+            .flow-cta-box--full .flow-cta-box__content {
+                padding: 3rem 3rem 3rem 3.5rem;
+            }
+            .flow-cta-box--full .flow-cta-box__visual {
+                min-height: 280px;
             }
         }
 
@@ -2249,7 +2344,7 @@
         .benefits-logos-area {
             position: relative;
             width: 100%;
-            padding-bottom: 2.5rem;
+            padding-bottom: 1.5rem;
         }
         .benefits-logos-note {
             position: absolute;
@@ -2283,7 +2378,7 @@
         .benefits-voices-with-logos {
             position: relative;
             overflow: visible;
-            padding: 0 0 4rem;
+            padding: 0 0 2.25rem;
         }
         .benefits-logos-bg {
             width: 100vw;

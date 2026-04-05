@@ -2,8 +2,20 @@
 
 function clamp(n, min, max) { return Math.max(min, Math.min(max, n)); }
 
+/** プログラム紹介動画の URL（#about スライド・#flow の唯一の定義。HTML では src を書かない） */
+var EC_PROGRAM_VIDEO_SRC = 'videos/program-video.mp4';
+
+function initProgramVideoSources() {
+    var nodes = document.querySelectorAll('video[data-ec-program-video]');
+    for (var i = 0; i < nodes.length; i++) {
+        var v = nodes[i];
+        if (!v.getAttribute('src')) v.src = EC_PROGRAM_VIDEO_SRC;
+    }
+}
+
 // ページロード時の初期化
 document.addEventListener('DOMContentLoaded', function() {
+    initProgramVideoSources();
     initKvSwiper();
     initReasonPin();
     initProblemPin();
@@ -315,22 +327,26 @@ function initSmoothScroll() {
 
 // スクロールアニメーション
 function initScrollAnimations() {
-    const observerOptions = {
-        threshold: 0.08,
-        rootMargin: '0px 0px -80px 0px'
-    };
-    
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
+    function onIntersect(entries) {
+        entries.forEach(function(entry) {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
             }
         });
-    }, observerOptions);
-    
-    const fadeElements = document.querySelectorAll('.fade-in, .js-compass-scroll');
-    fadeElements.forEach(element => {
-        observer.observe(element);
+    }
+    var defaultOpts = { threshold: 0.08, rootMargin: '0px 0px -80px 0px' };
+    var bandOpts = { threshold: 0.02, rootMargin: '0px 0px 8% 0px' };
+    var observer = new IntersectionObserver(onIntersect, defaultOpts);
+    var bandObserver = new IntersectionObserver(onIntersect, bandOpts);
+
+    document.querySelectorAll('.fade-in:not(.fade-in--band)').forEach(function(el) {
+        observer.observe(el);
+    });
+    document.querySelectorAll('.fade-in--band').forEach(function(el) {
+        bandObserver.observe(el);
+    });
+    document.querySelectorAll('.js-compass-scroll').forEach(function(el) {
+        observer.observe(el);
     });
 }
 

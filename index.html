@@ -7,9 +7,29 @@
     <meta name="description" content="企業の持続的成長を担うエグゼクティブ人材の育成を支援。経営シミュレーション体験を通じて、未来の経営人材を創るための人材育成プログラム。">
     <link rel="icon" href="images/header-logo.png" type="image/png">
     
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
+    <!-- Tailwind CSS（バージョン固定＋カスタム色は CSS 変数と同期） -->
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                /* :root と同一（opacity 修飾子 bg-*/50 等が正しく解決されるよう hex を使用） */
+                colors: {
+                    'navy-dark': '#0a1628',
+                    'navy-primary': '#1a2942',
+                    'navy-medium': '#2d3e5f',
+                    'navy-light': '#4a5f7f',
+                    'silver-light': '#e8ecf1',
+                    'silver-medium': '#c5cdd6',
+                    'silver-dark': '#8b95a5',
+                    'gold-accent': '#c9a961',
+                    'white-pure': '#ffffff',
+                },
+            },
+        },
+    };
+    </script>
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -172,7 +192,7 @@
                         </div>
                         <div class="reason-slide">
                             <div class="reason-slide-img reason-slide-video">
-                                <video id="programVideo" src="videos/program-video.mp4" autoplay muted loop playsinline width="900" height="600"></video>
+                                <video id="programVideo" data-ec-program-video autoplay muted loop playsinline width="900" height="600" preload="auto"></video>
                                 <div class="video-controls">
                                     <button type="button" class="video-control-btn" id="videoPlayPause" aria-label="再生・停止"><i class="fas fa-pause" aria-hidden="true"></i></button>
                                     <button type="button" class="video-control-btn" id="videoMute" aria-label="音声の切り替え"><i class="fas fa-volume-up" aria-hidden="true"></i></button>
@@ -336,43 +356,59 @@
                 </p>
             </div>
 
-            <div class="flow-body max-w-6xl mx-auto">
-                <div class="flow-grid">
-                    <article class="flow-card flow-card--1 fade-in">
-                        <span class="flow-card__number" aria-hidden="true">1</span>
-                        <h3 class="flow-card__title">経営シミュレーション</h3>
-                        <ul class="flow-card__list">
-                            <li>ボードゲーム形式で会社を起業・経営</li>
-                            <li>意思決定プロセスの実践</li>
-                            <li>経営者視点での判断力養成</li>
-                            <li>アクティブ・ラーニング手法</li>
-                        </ul>
-                        <span class="flow-card__arrow" aria-hidden="true"><i class="fas fa-arrow-right"></i></span>
-                    </article>
-                    <article class="flow-card flow-card--2 fade-in">
-                        <span class="flow-card__number" aria-hidden="true">2</span>
-                        <h3 class="flow-card__title">フィードバック</h3>
-                        <ul class="flow-card__list">
-                            <li>専門講師による振り返り</li>
-                            <li>経営数字の分析と解説</li>
-                            <li>意思決定の妥当性検証</li>
-                            <li>改善ポイントの明確化</li>
-                        </ul>
-                        <span class="flow-card__arrow" aria-hidden="true"><i class="fas fa-arrow-right"></i></span>
-                    </article>
-                    <article class="flow-card flow-card--3 fade-in">
-                        <span class="flow-card__number" aria-hidden="true">3</span>
-                        <h3 class="flow-card__title">実務への応用</h3>
-                        <ul class="flow-card__list">
-                            <li>自社課題への適用支援</li>
-                            <li>PDCA改善サイクル構築</li>
-                            <li>継続的な成長支援</li>
-                            <li>フォローアップ体制</li>
-                        </ul>
-                        <p class="flow-card__note">※オプション(要相談)</p>
-                    </article>
+            <div class="flow-split-layout max-w-7xl mx-auto">
+                <!-- 左側：コンテンツ（ステップ） -->
+                <div class="flow-content-col">
+                    <div class="flow-steps">
+                        <article class="flow-step fade-in">
+                            <div class="flow-step__header">
+                                <span class="flow-step__number" aria-hidden="true"></span>
+                                <h3 class="flow-step__title">経営シミュレーション</h3>
+                            </div>
+                            <ul class="flow-step__list">
+                                <li>ボードゲーム形式で会社を起業・経営</li>
+                                <li>意思決定プロセスの実践</li>
+                                <li>経営者視点での判断力養成</li>
+                                <li>アクティブ・ラーニング手法</li>
+                            </ul>
+                        </article>
+                        <article class="flow-step fade-in">
+                            <div class="flow-step__header">
+                                <span class="flow-step__number" aria-hidden="true"></span>
+                                <h3 class="flow-step__title">フィードバック</h3>
+                            </div>
+                            <ul class="flow-step__list">
+                                <li>専門講師による振り返り</li>
+                                <li>経営数字の分析と解説</li>
+                                <li>意思決定の妥当性検証</li>
+                                <li>改善ポイントの明確化</li>
+                            </ul>
+                        </article>
+                        <article class="flow-step fade-in">
+                            <div class="flow-step__header">
+                                <span class="flow-step__number" aria-hidden="true"></span>
+                                <h3 class="flow-step__title">実務への応用</h3>
+                            </div>
+                            <ul class="flow-step__list">
+                                <li>自社課題への適用支援</li>
+                                <li>PDCA改善サイクル構築</li>
+                                <li>継続的な成長支援</li>
+                                <li>フォローアップ体制</li>
+                            </ul>
+                            <p class="flow-step__note">※オプション(要相談)</p>
+                        </article>
+                    </div>
                 </div>
-                <div class="flow-cta-box fade-in">
+
+                <!-- 右側：動画（Sticky） -->
+                <div class="flow-video-col fade-in">
+                    <div class="flow-video-wrapper">
+                        <video id="flowProgramVideo" data-ec-program-video controls playsinline preload="metadata" width="900" height="600"></video>
+                    </div>
+                </div>
+
+                <!-- 1〜3と別枠：セクション全幅の横広バンド -->
+                <div class="flow-cta-box flow-cta-box--full fade-in fade-in--band">
                     <div class="flow-cta-box__content">
                         <i class="flow-cta-box__icon fas fa-lightbulb" aria-hidden="true"></i>
                         <h3 class="flow-cta-box__title">アクティブ・ラーニングの効果</h3>
